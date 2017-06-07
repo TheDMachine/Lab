@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Ejemplo</title>
-</head>
-<body>
-	<script src="vendor/angular.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Lab</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body >
+    <div ui-view></div>
 
-	<script src="app.js"></script>
-	<script src="index.route.js"></script>
-</body>
+    <script src="vendor/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+
+    <script src="app.js"></script>
+    <script src="index.route.js"></script>
+
+
+    <script src="components/users/user.service.js"></script>
+    <script src="components/users/user.controller.js"></script>
+
+    <!-- python -m SimpleHTTPServer 9000   copiar en la terminal, mac linux, para crear un localhost-->
+
+  </body>
 </html>
