@@ -1,7 +1,7 @@
 (function(){
   angular
   .module('myApp')
-  .service('userService', adminService);
+  .service('adminService', adminService);
 
   function adminService(){
     var admins = [];
