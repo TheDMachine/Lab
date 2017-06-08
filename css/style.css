@@ -1,0 +1,39 @@
+body{
+  font-family: 'Roboto', sans-serif;
+}
+.inputdemoErrorsAdvanced .hint {
+
+    position: absolute;
+    left: 2px;
+    right: auto;
+    bottom: 7px;
+
+    font-size: 12px;
+    line-height: 14px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+
+    color: grey;
+  }
+  .inputdemoErrorsAdvanced .hint.ng-hide,
+  .inputdemoErrorsAdvanced .hint.ng-enter,
+  .inputdemoErrorsAdvanced .hint.ng-leave.ng-leave-active {
+    bottom: 26px;
+    opacity: 0; }
+  .inputdemoErrorsAdvanced .hint.ng-leave,
+  .inputdemoErrorsAdvanced .hint.ng-enter.ng-enter-active {
+    bottom: 7px;
+    opacity: 1; }
+
+md-toolbar h1{
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+md-toolbar{
+  min-height: 0;
+  padding: 1%;
+}
+
+.hint{
+  font-size: 0.8rem;
+}
