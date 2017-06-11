@@ -10,6 +10,12 @@
           controller: 'userAccountCtrl',
           controllerAs: 'user'
         })
+        .state('login',{
+            url:'/login',
+            templateUrl: 'components/users/login.view.html',
+            controller: 'loginController',
+            controllerAs:'login'
+        })
 
       $urlRouterProvider.otherwise('/users');
     }
