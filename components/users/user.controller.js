@@ -39,7 +39,7 @@
           age : '',
           emergContact : vm.emergContact,
           userType : vm.userType,
-          logIn : false;
+          logIn : false
           
         };
         console.log(newUser);
