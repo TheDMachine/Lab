@@ -1,3 +1,3 @@
 (function(){
-  angular.module('myApp',['ui.router','ngMessages','ngMaterial'])
+  angular.module('myApp',['ui.router','ngMessages','ngMaterial',])
 })();
