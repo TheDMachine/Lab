@@ -5,6 +5,7 @@
     function userAccountCtrl(userService, $scope){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
+      vm.view = 1;
       $scope.showHints = true;
       $scope.user = {
         name: "",

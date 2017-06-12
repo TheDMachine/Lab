@@ -1,10 +1,12 @@
-<div ng-controller="userAccountCtrl as user" layout="column" ng-cloak>
+<div ng-controller="userAccountCtrl as user" layout="column" ng-cloak ng-init="view = 1">
 
-<md-toolbar>
-  <h1>Admin Platform</h1>
+<md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+  <h1 flex="10">Admin Platform</h1>
+  <md-button ng-click="view = 1" ng-style="view === 1 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Registros</md-button>
+  <md-button ng-click="view = 2" ng-style="view === 2 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Usuarios</md-button>
 </md-toolbar>
 
-  <md-content layout-padding>
+  <md-content layout-padding ng-show="view == 1">
     <form name="userForm">
       <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
 
@@ -119,6 +121,28 @@
         </md-radio-group>
 
       </div>
+
+      <md-input-container class="md-block" flex-gt-sm>
+          <label class="md-primary">Teléfono</label>
+          <input name="id" ng-model="user.id" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" />
+
+          <div class="hint" ng-if="showHints">########</div>
+
+          <div ng-messages="userForm.id.$error" ng-if="!showHints">
+            <div ng-message="pattern">######### - Porfavor ingrese un número de teléfono válido.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container> 
+        <label class="md-primary">Nombre de usuario</label>
+        <input name="username" ng-model="user.username" ng-pattern="/^[a-zA-Z0-9]*$/" />
+
+        <div class="hint" ng-if="showHints">xyz08 OR abcd78</div>
+
+        <div ng-messages="userForm.username.$error" ng-if="!showHints">
+          <div ng-message="pattern">xyz08 OR abcd78 - Porfavor ingrese un nombre de usuario válido</div>
+        </div>
+        </md-input-container>
 
         <md-input-container class="md-block" flex-gt-sm>
           <label>Email</label>
