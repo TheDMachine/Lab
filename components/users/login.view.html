@@ -1,0 +1,19 @@
+<h1>{{name}}</h1>
+<form name="frmLogin" novalidate autocomplete="false" ng-submit="logIn()">
+    <md-content>
+        <div>
+            <md-input-container>
+                <label>Usuario</label>
+                <input ng-model="user" name="username" required/>
+            </md-input-container>
+            <div ng-messages="frmLogin.username.$error">
+        </div>
+        <div>
+            <md-input-container>
+                <label>Contraseña</label>
+                <input ng-model="password" name="password" required />
+            </md-input-container>
+        </div>
+    </md-content>
+    <md-button type="submit" ng-disabled="frmLogin.$invalid">Iniciar sessión</md-button>
+</form>
