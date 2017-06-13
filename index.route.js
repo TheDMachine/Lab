@@ -12,7 +12,7 @@
         })
         .state('client',{
           url : '/client', //ruta del url del estado
-          templateUrl : 'components/users/client.view.html',//vista que se va a cargar para este estado
+          templateUrl : 'components/client/client.view.html',//vista que se va a cargar para este estado
           controller: 'clientAccountCtrl',
           controllerAs: 'client'
         })
