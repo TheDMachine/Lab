@@ -1,3 +1,4 @@
 (function(){
-  angular.module('myApp',['ui.router','ngMessages','ngMaterial',])
+  'use strict'
+  angular.module('myApp',['ui.router','ngMessages','ngMaterial','ui.bootstrap'])
 })();
