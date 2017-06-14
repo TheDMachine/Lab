@@ -17,7 +17,7 @@
           name : vm.name,
           secondName : vm.secondName,
           firstName : vm.firstName,
-          lastName : vn.lastName,
+          lastName : vm.lastName,
           nationality : vm.nationality,
           idType : vm.idType,
           myDate : vm.myDate,
