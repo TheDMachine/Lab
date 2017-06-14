@@ -6,15 +6,11 @@
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
       vm.view = 1;
-      $scope.showHints = true;
-      $scope.user = {
-        name: "",
-        email: "",
-        social: "123456789",
-        phone: "N/A"
-      };
+      /*$scope.showHints = true;*/
+      vm.roles = ['Administrador', 'Instructor', 'Cliente'];
 
         vm.myDate = new Date();
+        vm.date = new Date();
         vm.isOpen = false;
 
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
@@ -28,13 +24,22 @@
           name : vm.name,
           secondName : vm.secondName,
           firstName : vm.firstName,
-          lastName : vn.lastName,
+          lastName : vm.lastName,
           nationality : vm.nationality,
           idType : vm.idType,
           myDate : vm.myDate,
-          type : vm.type,
-          coin : vm.coin
-        }
+          gender : vm.gender,
+          phone : vm.phone,
+          userName : vm.userName,
+          password : vm.password,
+          image : vm.image,
+          age : vm.age,
+          emergContact : vm.emergContact,
+          userType : vm.userType,
+          logIn : false,
+          status : 'active'
+        };
+        vm.age = vm.date.getFullYear() - vm.myDate.getFullYear();
         console.log(newUser);
         userService.setUsers(newUser);
         clean();
@@ -57,6 +62,5 @@
       }
 
     }
-     //se establece un objeto de angular normal
-
+     //se establece un objeto de angular normal 
 })();
