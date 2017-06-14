@@ -1,21 +1,28 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Ejemplo</title>
+<html ng-app="myApp" ng-cloak>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div ui-view></div>
 
-</head>
-<body>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+    <script src="app.js"></script>
+    <script src="index.route.js"></script>
+    <script src="components/users/user.service.js"></script>
+    <script src="components/users/user.controller.js"></script>
 
-<h1>vjvbiv</h1>
-<h2>hola hola</h2>
+    <!-- python -m SimpleHTTPServer 9000   copiar en la terminal, mac linux, para crear un localhost-->
 
-	<script src="vendor/angular.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+  </body>
 
-	<script src="app.js"></script>
-	<script src="index.route.js"></script>
-	<h4>hola gola
-	</h4>
-
-</body>
 </html>
