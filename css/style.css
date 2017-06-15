@@ -43,11 +43,24 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
   background: #1E88E5;
 }
 
-table{
-  text-align: center;
-  font-size: 0.9rem;
+md-select{
+  margin: 0;
 }
 
-th,td{
-  padding: 1% 2%;
+table{
+  font-size: 0.85rem;
+}
+
+th{
+  font-weight: 500;
+}
+
+#logOut{
+  float: right;
+}
+
+md-toolbar:after{
+  clear: both;
+  display: block;
+  content: '';
 }

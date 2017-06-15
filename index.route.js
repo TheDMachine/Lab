@@ -4,10 +4,10 @@
     .config(configuration);
     function configuration($stateProvider, $urlRouterProvider){ //stateProvider
       $stateProvider
-        .state('user',{
-          url : '/users', //ruta del url del estado
-          templateUrl : 'components/users/user.view.html',//vista que se va a cargar para este estado
-          controller: 'userAccountCtrl',
+        .state('admin',{
+          url : '/admin', //ruta del url del estado
+          templateUrl : 'components/users/admin.view.html',//vista que se va a cargar para este estado
+          controller: 'adminAccountCtrl',
           controllerAs: 'user'
         })
         .state('client',{
@@ -17,6 +17,6 @@
           controllerAs: 'client'
         })
 
-      $urlRouterProvider.otherwise('/users');
+      $urlRouterProvider.otherwise('/admin');
     }
 })();

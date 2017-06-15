@@ -1,46 +1,40 @@
-<div ng-controller="userAccountCtrl as user" layout="column" ng-cloak ng-init="view = 1">
+<div layout="column" ng-cloak ng-init="view = 1">
 
 <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-  <h1 flex="10">Admin Platform</h1>
+  <h1>Admin Platform</h1>
   <md-button ng-click="view = 1" ng-style="view === 1 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Registros</md-button>
   <md-button ng-click="view = 2" ng-style="view === 2 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Usuarios</md-button>
+  <span flex></span>
+  <md-button id="logOut" class="layout-align-end-start" ng-click="user.logOut()">Cerrar sesión</md-button>
 </md-toolbar>
 
-<table id="tblDatos" ng-show="view == 2">
-    <thead>
-      <tr>
-        <th>Cédula</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Nacionalidad</th>
-        <th>Género</th>
-        <th>Teléfono</th>
-        <th>Usuario</th>
-        <th>Correo</th>
-        <th>Tipo</th>
-        <th>Estado</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="item in user.users">
-          <td>{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.lastName}}</td>
-          <td>{{item.nationality}}</td>
-          <td>{{item.gender}}</td>
-          <td>{{item.phone}}</td>
-          <td>{{item.userName}}</td>
-          <td>{{item.emergContact}}</td>
-          <td>{{item.userType}}</td>
-          <td>
-            <md-radio-group layout="row" layout-align="start center">
-              <md-radio-button  name="status" ng-model="user.status"  value="active" class="md-primary">Activo</md-radio-button>
-              <md-radio-button name="status" ng-model="user.status" value="inactive">Inactivo</md-radio-button>
-            </md-radio-group>
-          </td>
-      </tr>
-    </tbody>
-  </table>
+  <table id="tblDatos" ng-show="view == 2" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Cédula</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Usuario</th>
+      <th>Rol</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in user.users">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.firstName}}</td>
+      <td>{{item.userName}}</td>
+      <td>{{item.userType}}</td>
+      <td>
+        <md-select name="status" ng-model="item.status" required>
+          <md-option value="active">Activo</md-option>
+          <md-option value="inactive">Inactivo</md-option>
+        </md-select>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
   <md-content layout-padding ng-show="view == 1">
     <form name="userForm" novalidate>
@@ -163,17 +157,18 @@
           <!-- Spacer //-->
       </div>
 
-      <div layout-gt-sm="row"> 
-          <md-input-container class="md-block" flex-gt-sm  >
-          <label class="md-primary">Teléfono</label>
-          <input name="phone" required ng-model="user.phone" ng-pattern="/^[0-9]{8}$/" />
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Correo electrónico</label>
+          <input required name="emergContact" ng-model="user.emergContact"
+                 minlength="10" maxlength="100" ng-pattern="/^[a-z0-9]+[a-z0-9._]+@[a-z0-9]+\.[a-z.]{2,5}$"/>
 
-          <div class="hint" ng-if="showHints">########</div>
-
-          <div ng-messages="userForm.phone.$error" ng-if="!showHints">
-            <div ng-message="pattern">######### - Ingrese un número de teléfono válido.</div>
+          <div ng-messages="userForm.emergContact.$error" ng-hide="showHints">
+            <div ng-message="pattern">
+              Your email must be between 10 and 100 characters long and look like an e-mail address.
+            </div>
           </div>
-        </md-input-container>
+        </md-input-container> 
 
         <md-input-container > 
         <label class="md-primary">Nombre de usuario</label>
@@ -186,7 +181,7 @@
         </div>
         </md-input-container>
 
-        <md-input-container > 
+        <md-input-container> 
           <label class="md-primary">Contraseña</label>
           <input name="password" required ng-model="user.password" ng-pattern="/^[a-zA-Z0-9]*$/" />
 
@@ -203,21 +198,22 @@
       </div>
 
       <div layout-gt-sm="row">
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Correo electrónico</label>
-          <input name="emergContact" ng-model="user.emergContact"
-                 required minlength="10" maxlength="100" ng-pattern="/^[a-z0-9]+[a-z0-9._]+@[a-z0-9]+\.[a-z.]{2,5}$" />
 
-          <div ng-messages="userForm.emergContact.$error" ng-hide="showHints">
-            <div ng-message="pattern">
-              Your email must be between 10 and 100 characters long and look like an e-mail address.
-            </div>
+        <md-input-container class="md-block" flex-gt-sm  >
+          <label class="md-primary">Teléfono</label>
+          <input name="phone" required ng-model="user.phone" ng-pattern="/^[0-9]{8}$/" />
+
+          <div class="hint" ng-if="showHints">########</div>
+
+          <div ng-messages="userForm.phone.$error" ng-if="!showHints">
+            <div ng-message="pattern">######### - Ingrese un número de teléfono válido.</div>
           </div>
         </md-input-container>
+        
 
         <md-input-container>
           <label>Tipo de usuario</label>
-          <md-select ng-model="user.userType">
+          <md-select ng-model="user.userType" required>
             <md-option><em>Ninguno</em></md-option>
             <md-option ng-repeat="item in user.roles" ng-value="item">
               {{item}}

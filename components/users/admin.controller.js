@@ -1,8 +1,8 @@
 (function(){
   angular
     .module('myApp')
-    .controller('userAccountCtrl', userAccountCtrl);
-    function userAccountCtrl(userService, $scope){ //se inyecta el service userService en el controlador para que se tenga acceso
+    .controller('adminAccountCtrl', adminAccountCtrl);
+    function adminAccountCtrl(userService, $scope){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
       vm.view = 1;
@@ -40,6 +40,7 @@
           status : 'active'
         };
         vm.age = vm.date.getFullYear() - vm.myDate.getFullYear();
+        newUser.age = vm.age;
         console.log(newUser);
         userService.setUsers(newUser);
         clean();
@@ -47,18 +48,38 @@
 
 
       };
+
+      vm.logOut = function(){
+        $location.url('/login');
+      }
+
+      vm.seeValue = function(item){
+        console.log(item);
+      };
+
       vm.update = function(puser){
           vm.user = puser.user;
           vm.type = puser.type;
           vm.coin = puser.coin;
-
-
       }
 
       function clean(){
-        vm.user = '';
-        vm.type = '';
-        vm.coin = '';
+        vm.id = '';
+        vm.name = '';
+        vm.secondName = '';
+        vm.firstName = '';
+        vm.lastName = '';
+        vm.nationality = '';
+        vm.idType = '';
+        vm.myDate = '';
+        vm.gender = '';
+        vm.phone = '';
+        vm.userName = '';
+        vm.password = '';
+        vm.image = '';
+        vm.age = '';
+        vm.emergContact = '';
+        vm.userType = '';
       }
 
     }
