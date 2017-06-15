@@ -42,3 +42,30 @@ md-toolbar{
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){
   background: #1E88E5;
 }
+
+#clientView{
+  background-image: url(../img/backgClient1.jpg);
+  background-size: cover;
+  padding-bottom: 300px;
+}
+#clientView #NameImgSpace{
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+#clientView div h3{
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+#clientView .buttonCollapse{
+  background: #efc01d;
+  border: none;
+  color: #000;
+}
+#clientView .buttonCollapse:hover{
+  transition: 2s;
+  background: #f9da6e;
+}
+#clientView div p{
+  color: #fff;
+}

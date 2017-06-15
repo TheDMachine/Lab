@@ -1,35 +1,19 @@
 (function(){
   angular
     .module('myApp')
-    .controller('clientAccountCtrl', clientAccountCtrl);
-    function clientAccountCtrl(userService, $scope){ //se inyecta el service userService en el controlador para que se tenga acceso
+    .controller('coachAccountCtrl', coachAccountCtrl);
+    function coachAccountCtrl(userService){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
-      var modUser = {};
-
+      var newUser = {};
+      
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.users = userService.getUsers();
       }init();
 
-      vm.getInfo = function(puser){
-          vm.id = puser.id;
-          vm.name = puser.name;
-          vm.secondName = puser.secondName;
-          vm.firstName = puser.firstName;
-          vm.lastName = puser.lastName;
-          vm.nationality = puser.nationality;
-          vm.idType = puser.idType;
-          vm.myDate = puser.myDate;
-          vm.gender = puser.gender;
-          vm.phone = puser.phone;
-          vm.userName = puser.userName;
-          vm.password = puser.password;
-          vm.image = puser.image;
-          vm.emergContact = puser.emergContact;
-      }
+      vm.save= function(){
 
-      vm.update = function(){
-        var modUser = {
+        var newUser = {
           id : vm.id,
           name : vm.name,
           secondName : vm.secondName,
@@ -49,17 +33,10 @@
           coach : vm.coach,
           logIn : false,
           status : 'active'
-
-        };
+        }
         userService.setUsers(newUser);
-        clean();
         init();
       }
-
-      function clean(){
-        vm.user = {};
-      }
-
     }
      //se establece un objeto de angular normal
 

@@ -1,3 +1,83 @@
+<section >
+
+  <form>
+    <label for="">Id:</label>
+    <input type="text" name="id" ng-model="coach.id">
+
+    <label for="">nombre:</label>
+    <input type="text" name="name" ng-model="coach.name">
+
+    <label for="">Segundo nombre:</label>
+    <input type="text" name="secondName" ng-model="coach.secondName">
+
+    <label for="">First name:</label>
+    <input type="text" name="firstName" ng-model="coach.firstName">
+
+    <label for="">Last name:</label>
+    <input type="text" name="lastName" ng-model="coach.lastName" >
+
+    <label for="">nationality</label>
+    <input type="text" name="nationality" ng-model="coach.nationality" >
+
+    <label for="">Tipo de identificación</label>
+    <select name="idType" ng-model="coach.idType">
+      <option value="">Seleccione la opción</option>
+      <option value="tim">TIM</option>
+      <option value="cdi">Cédula de identificación</option>
+    </select>
+
+    <label for="">Fecha de nacimiento</label>
+    <input name="myDate" ng-model="coach.myDate" type="date" class="form-control" >
+
+    <div>
+      <label class="radio-inline"><input type="radio" name="gender" ng-model="coach.gender">Masculino</label>
+      <label class="radio-inline"><input type="radio" name="gender" ng-model="coach.gender">Femenino</label>
+      <label class="radio-inline"><input type="radio" name="gender" ng-model="coach.gender">Indefinido</label>
+    </div>
+
+    <label for="">Teléfono</label>
+    <input name="phone" ng-model="coach.phone" type="text" class="form-control">
+
+    <label for="">Usuario</label>
+    <input name="userName" ng-model="coach.userName" type="text" class="form-control" >
+
+    <label for="">Contraseña</label>
+    <input name="password" ng-model="coach.password" type="password" class="form-control" >
+
+    <label for="">iamgen</label>
+    <input name="image" ng-model="coach.image" type="text" class="form-control" >
+
+    <label for="">age</label>
+    <input name="age" ng-model="age.password" type="text" class="form-control" >
+
+    <label for="">emergContact</label>
+    <input name="emergContact" ng-model="coach.emergContact" type="text" class="form-control" >
+
+    <label for="">Tipo de usuario</label>
+    <select name="idType" ng-model="coach.idType">
+      <option value="">Seleccione la opción</option>
+      <option value="cliente">vip</option>
+      <option value="coach">bcbdcu</option>
+    </select>
+
+    <label for="">entrenador</label>
+    <input name="coach" ng-model="coach.coach" type="text" class="form-control" >
+
+    <label for="">status</label>
+    <select name="status" ng-model="coach.status">
+      <option value="">Seleccione la opción</option>
+      <option value="active">activo</option>
+      <option value="desabled">deshabilitado</option>
+    </select>
+
+    <input type="submit" value="Register" ng-click="coach.save()" >
+  </form>
+
+
+</section>
+
+
+
 <div class="container-fluid">
   <div class="row coachView">
     <div class="dateRequested col-xs-12 col-sm-6 col-lg-2">
@@ -10,7 +90,7 @@
         <tbody>
           <tr>
             <td class="card">
-              
+
             </td>
           </tr>
         </tbody>

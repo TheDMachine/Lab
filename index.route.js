@@ -16,6 +16,12 @@
           controller: 'clientAccountCtrl',
           controllerAs: 'client'
         })
+        .state('coach',{
+          url : '/coach', //ruta del url del estado
+          templateUrl : 'components/coach/coach.view.html',//vista que se va a cargar para este estado
+          controller: 'coachAccountCtrl',
+          controllerAs: 'coach'
+        })
 
       $urlRouterProvider.otherwise('/users');
     }

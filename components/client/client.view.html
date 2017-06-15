@@ -1,79 +1,154 @@
 
-<section class="container-fluid">
-	<div>
-		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Modificar</button>        
-      <div class="collapse" id="collapseExample">
+<section id="clientView" class="container-fluid">
+  <div id="NameImgSpace" class="row">
+    <div class="col-xs-6 col-sm-8 col-md-9 col-lg-10"><h3>¡Bienvenido {{vm.users.name}} {{vm.users.firstName}}!</h3></div>
+    <img class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-src="{{client.image}}" alt="Description" width="40px" height="60px" />
+  </div>
+	<div class="row">
+		<button class="btn btn-primary buttonCollapse" type="button"  data-toggle="collapse" data-target="#ModInfo" aria-expanded="false" aria-controls="ModInfo" ng-click="client.getInfo(vm.users.user)">Editar Perfil</button>
+      <div class="collapse" id="ModInfo">
            <div class="well">
-              <form class="form-inline ">
+              <form name="frmModInfo" class="form-inline ">
               	<div class="form-group">
               		<label for="">Cédula</label>
-              		<input name="id" type="text" class="form-control">
+              		<input name="id" ng-model="client.user.id" type="text" class="form-control" disabled="disabled">
+                  <div ng-messages="frmModInfo.id.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
               	</div>
                 <div class="form-group">
                   <label for="">Nombre</label>
-                  <input name="name" type="text" class="form-control">
+                  <input name="name" ng-model="client.user.name" type="text" class="form-control" required>
+                  <div ng-messages="frmModInfo.name.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Segundo Nombre</label>
-                  <input name="secondName" type="text" class="form-control">
+                  <input name="secondName" ng-model="client.user.secondName" type="text" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="">Primer Apellido</label>
-                  <input name="firstName" type="text" class="form-control">
+                  <input name="firstName" ng-model="client.user.firstName" type="text" class="form-control" required>
+                  <div ng-messages="frmModInfo.firstName.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Segundo Apellido</label>
-                  <input name="lastName" type="text" class="form-control">
+                  <input name="lastName" ng-model="client.user.lastName" type="text" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="">Nacionalidad</label>
-                  <input name="nationality" type="text" class="form-control">
+                  <input name="nationality" ng-model="client.user.nationality" type="text" class="form-control" required>
+                  <div ng-messages="frmModInfo.nationality.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Tipo de identificación</label>
-                  <select name="idType">
+                  <select name="idType" ng-model="client.user.idType" required>
                     <option value="">Seleccione la opción</option>
                     <option value="tim">TIM</option>
                     <option value="cdi">Cédula de identificación</option>
                   </select>
+                  <div ng-messages="frmModInfo.idType.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Fecha de nacimiento</label>
-                  <input name="myDate" type="text" class="form-control">
+                  <input name="myDate" ng-model="client.user.myDate" type="date" class="form-control" required>
+                  <div ng-messages="frmModInfo.myDate.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <label class="radio-inline"><input type="radio" name="gender">Masculino</label>
-                  <label class="radio-inline"><input type="radio" name="gender">Femenino</label>
-                  <label class="radio-inline"><input type="radio" name="gender">Indefinido</label>
+                  <label class="radio-inline"><input type="radio" name="gender" ng-model="client.user.gender">Masculino</label>
+                  <label class="radio-inline"><input type="radio" name="gender" ng-model="client.user.gender">Femenino</label>
+                  <label class="radio-inline"><input type="radio" name="gender" ng-model="client.user.gender">Indefinido</label>
                 </div>
                 <div class="form-group">
                   <label for="">Teléfono</label>
-                  <input name="phone" type="text" class="form-control">
+                  <input name="phone" ng-model="client.user.phone" type="text" class="form-control" required>
+                  <div ng-messages="frmModInfo.phone.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Usuario</label>
-                  <input name="userName" type="text" class="form-control">
+                  <input name="userName" ng-model="client.user.userName" type="text" class="form-control" required>
+                  <div ng-messages="frmModInfo.userName.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Contraseña</label>
-                  <input name="password" type="text" class="form-control">
+                  <input name="password" ng-model="client.user.password" type="password" class="form-control" required>
+                  <div ng-messages="frmModInfo.password.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Fotografía</label>
-                  <input name="image" type="text" class="form-control">
+                  <input name="image" ng-model="client.user.image" type="text" class="form-control" required>
+                  <div ng-messages="frmModInfo.image.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="">Contacto de emergencia</label>
-                  <input name="emergContact" type="text" class="form-control">
+                  <input name="emergContact" ng-model="client.user.emergContact" type="text" class="form-control" required>
+                  <div ng-messages="frmModInfo.emergContact.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="">Tipo de Usuario</label>
-                  <input name="userType" type="text" class="form-control">
-                </div>
+                <input type="button" value="Actualizar" ng-click="client.update(user)" ng-disabled="frmModInfo.$invalid">
               </form>
            </div>
         </div>
 	</div>
-    
+
+    <div class="row">
+    <button class="btn btn-primary buttonCollapse" type="button"  data-toggle="collapse" data-target="#clientMeasurement" aria-expanded="false" aria-controls="clientMeasurement">Solicitar cita de medición</button>
+      <div class="collapse" id="clientMeasurement">
+           <div class="well">
+              <p>Su instructor asignado es {{vm.users.coach}}</p>
+              <form name="frmClientM" class="form-inline ">
+                <div class="form-group">
+                  <label for="">Fecha a solicitar es</label>
+                  <input name="date" ng-model="" type="date" class="form-control">
+                  <div ng-messages="">
+                    <div ng-messages-include=""></div>
+                  </div>
+                </div>
+                <input type="button" value="Enviar" ng-click="client.update(user)">
+              </form>
+           </div>
+        </div>
+  </div>
+
+  <div class="row">
+    <p>Sus medidas al día de hoy son:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>PORCENTAJE DE MASA MUSCULAR</th>
+          <th>PORCENTAJE DE GRASA SUBCUTÁNEA</th>
+          <th>IMC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="dateRange:ctrl.from:ctrl.to" >
+            <td>{{...}}</td>
+            <td>{{...}}</td>
+            <td>{{...}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Ver medidas de otras fechas, seleccione el rango:</p>
+    <input  ng-model="ctrl.from" name="from" type="date"/>
+    <input  ng-model="ctrl.to" name="to" type="date"/>
+  </div>
 
 </section>
