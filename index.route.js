@@ -10,15 +10,15 @@
           controller: 'userAccountCtrl',
           controllerAs: 'user'
         })
-        .state('client',{
-          url : '/client', //ruta del url del estado
-          templateUrl : 'components/client/client.view.html',//vista que se va a cargar para este estado
+        .state('clients',{
+          url : '/clients', //ruta del url del estado
+          templateUrl : 'components/clients/client.view.html',//vista que se va a cargar para este estado
           controller: 'clientAccountCtrl',
           controllerAs: 'client'
         })
-        .state('coach',{
-          url : '/coach', //ruta del url del estado
-          templateUrl : 'components/coach/coach.view.html',//vista que se va a cargar para este estado
+        .state('coaches',{
+          url : '/coaches', //ruta del url del estado
+          templateUrl : 'components/coaches/coach.view.html',//vista que se va a cargar para este estado
           controller: 'coachAccountCtrl',
           controllerAs: 'coach'
         })

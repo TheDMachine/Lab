@@ -5,10 +5,17 @@
     function clientAccountCtrl(userService, $scope){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
-      var modUser = {};
+      var vm.modUser = {};
+      var vm.userIn = {};
 
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.users = userService.getUsers();
+
+        for (var i = 0; i<vm.users.length; i++) {
+         if (vm.users[i].logIn == true) {
+          vm.userIn = vm.users[i];
+         } 
+       }
       }init();
 
       vm.getInfo = function(puser){
@@ -29,7 +36,8 @@
       }
 
       vm.update = function(){
-        var modUser = {
+        /*
+        var vm.modUser = {
           id : vm.id,
           name : vm.name,
           secondName : vm.secondName,
@@ -50,8 +58,15 @@
           logIn : false,
           status : 'active'
 
-        };
-        userService.setUsers(newUser);
+        };*/
+
+        for (var i = 0; i<vm.users.length; i++) {
+         if (vm.users[i].logIn == true) {
+          vm.users[i] = vm.userIn;
+         } 
+       }
+
+        userService.setUsers(vm.users);
         clean();
         init();
       }
