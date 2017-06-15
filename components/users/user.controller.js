@@ -31,9 +31,17 @@
           nationality : vm.nationality,
           idType : vm.idType,
           myDate : vm.myDate,
-          type : vm.type,
-          coin : vm.coin
-        }
+          gender : vm.gender,
+          phone : vm.phone,
+          userName : vm.userName,
+          password : vm.password,
+          image : vm.image,
+          age : '',
+          emergContact : vm.emergContact,
+          userType : vm.userType,
+          logIn : false
+          
+        };
         console.log(newUser);
         userService.setUsers(newUser);
         clean();

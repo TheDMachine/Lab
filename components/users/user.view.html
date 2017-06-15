@@ -1,8 +1,7 @@
-
 <div ng-controller="userAccountCtrl as user" layout="column" ng-cloak>
 
 <md-toolbar>
-  <h1>Hola <span>{{user.name}}</span></h1>
+  <h1>Admin Platform</h1>
 </md-toolbar>
 
   <md-content layout-padding>
@@ -112,7 +111,6 @@
           <label>Fecha de nacimiento</label>
           <md-datepicker ng-model="user.myDate" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
         </md-input-container>
-
         <md-radio-group layout="row" layout-align="start center" ng-model="user.genre">
             <md-radio-button value="male" class="md-primary">Masculino</md-radio-button>
             <md-radio-button value="female">Femenino</md-radio-button>
