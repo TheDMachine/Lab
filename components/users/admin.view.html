@@ -144,18 +144,15 @@
           <label>Fecha de nacimiento</label>
           <md-datepicker ng-model="user.myDate" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
         </md-input-container>
-<<<<<<< HEAD:components/users/user.view.html
         <md-radio-group layout="row" layout-align="start center" ng-model="user.genre">
             <md-radio-button value="male" class="md-primary">Masculino</md-radio-button>
             <md-radio-button value="female">Femenino</md-radio-button>
-            <md-radio-button value="undefined">Indefinido</md-radio-button>
-=======
+            <md-radio-button value="undefined">Indefinido</md-radio-button
 
         <md-radio-group layout="row" layout-align="start center" ng-model="user.gender">
             <md-radio-button name="gender" value="male" class="md-primary">Masculino</md-radio-button>
             <md-radio-button name="gender" value="female">Femenino</md-radio-button>
             <md-radio-button name="gender" value="undefined">Indefinido</md-radio-button>
->>>>>>> LabUno/Luis:components/users/admin.view.html
         </md-radio-group>
 
       </div>
@@ -175,9 +172,9 @@
               Your email must be between 10 and 100 characters long and look like an e-mail address.
             </div>
           </div>
-        </md-input-container> 
+        </md-input-container>
 
-        <md-input-container > 
+        <md-input-container >
         <label class="md-primary">Nombre de usuario</label>
         <input name="userName" required ng-model="user.userName" ng-pattern="^[a-z0-9_-]{3,15}$" />
 
@@ -188,7 +185,7 @@
         </div>
         </md-input-container>
 
-        <md-input-container> 
+        <md-input-container>
           <label class="md-primary">Contraseña</label>
           <input name="password" required ng-model="user.password" ng-pattern="/^[a-zA-Z0-9]*$/" />
 
@@ -216,7 +213,7 @@
             <div ng-message="pattern">######### - Ingrese un número de teléfono válido.</div>
           </div>
         </md-input-container>
-        
+
 
         <md-input-container>
           <label>Tipo de usuario</label>
