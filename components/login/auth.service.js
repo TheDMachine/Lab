@@ -27,10 +27,10 @@
           $location.path('/admin');
           break;
         case 'Cliente':
-          $location.path('/client');
+          $location.path('/clients');
           break;
         case 'Instructor':
-          $location.path('/coach');
+          $location.path('/coaches');
           break;
         default:
           $location.path('/');
