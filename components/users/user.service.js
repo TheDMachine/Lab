@@ -4,7 +4,11 @@
   .service('userService', userService);
 
   function userService(){
-    var users = [];
+    var users = [
+      {id:'113440824',name:'Rebeca',secondName:'Andrea',firstName:'Ramírez',lastName:'Barrientos', nationality:'costarricense', idType:'cédula', myDate:'12-03-1988', gender:'femenino', phone:'83435902', userName:'rbk', password:'qwert', image:'imagen', age:'29', emergContact:'Leda', userType:'cliente',coachName:'Alvaro',logIn: true, status : 'active'},
+      {id:'113440825',name:'Andrea',secondName:'Laura',firstName:'Nuñez',lastName:'Orozco', nationality:'costarricense', idType:'cédula', myDate:'12-03-1988', gender:'femenino', phone:'83435901', userName:'lhu', password:'asdfg', image:'imagen', age:'34', emergContact:'Karen', userType:'cliente',coachName:'Alvaro',logIn: false, status : 'active'},
+      {id:'113440826',name:'Giovanni',secondName:'Antonio',firstName:'Marín',lastName:'Machado', nationality:'costarricense', idType:'cédula', myDate:'12-03-1988', gender:'masculino', phone:'83435908', userName:'gmm', password:'zxcvb', image:'imagen', age:'25', emergContact:'Rebeca', userType:'cliente',coachName:'Alvaro',logIn: false, status : 'active'}
+    ];
     var publicAPI = {
       setUsers : _setUsers,
       getUsers : _getUsers,
@@ -36,7 +40,7 @@
       }
       localStorage.setItem('lsUsersList', JSON.stringify(usersList));
     }
-
+    
 
   }
 

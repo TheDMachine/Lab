@@ -1,4 +1,4 @@
-body{
+/*body{
   font-family: 'Roboto', sans-serif;
 }
 .inputdemoErrorsAdvanced .hint {
@@ -56,11 +56,26 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
   color: #fff;
   letter-spacing: 2px;
 }
-
+#clientView #forms-msj{
+  margin-top: 150px;
+}
+#clientView #forms-msj #ModInfo .well, #clientView #forms-msj #clientMeasurement .well{
+  background-color: rgba(255, 255, 255, 0.4);
+  border-color: transparent;
+}
+#clientView #forms-msj #forms div label{
+  color: #fff;
+}
+#clientView #forms-msj #motivationMsj p{
+  font-size: 2.857em;
+  text-align: center;
+  padding-top: 30px;
+}
 #clientView .buttonCollapse{
   background: #efc01d;
   border: none;
   color: #000;
+  margin-top: 30px;
 }
 #clientView .buttonCollapse:hover{
   transition: 2s;
@@ -69,3 +84,8 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 #clientView div p{
   color: #fff;
 }
+
+#clientView #notifications{
+  margin-top: 100px;
+}
+*/

@@ -1,121 +1,60 @@
-<section >
-
-  <form>
-    <label for="">Id:</label>
-    <input type="text" name="id" ng-model="coach.id">
-
-    <label for="">nombre:</label>
-    <input type="text" name="name" ng-model="coach.name">
-
-    <label for="">Segundo nombre:</label>
-    <input type="text" name="secondName" ng-model="coach.secondName">
-
-    <label for="">First name:</label>
-    <input type="text" name="firstName" ng-model="coach.firstName">
-
-    <label for="">Last name:</label>
-    <input type="text" name="lastName" ng-model="coach.lastName" >
-
-    <label for="">nationality</label>
-    <input type="text" name="nationality" ng-model="coach.nationality" >
-
-    <label for="">Tipo de identificación</label>
-    <select name="idType" ng-model="coach.idType">
-      <option value="">Seleccione la opción</option>
-      <option value="tim">TIM</option>
-      <option value="cdi">Cédula de identificación</option>
-    </select>
-
-    <label for="">Fecha de nacimiento</label>
-    <input name="myDate" ng-model="coach.myDate" type="date" class="form-control" >
-
-    <div>
-      <label class="radio-inline"><input type="radio" name="gender" ng-model="coach.gender">Masculino</label>
-      <label class="radio-inline"><input type="radio" name="gender" ng-model="coach.gender">Femenino</label>
-      <label class="radio-inline"><input type="radio" name="gender" ng-model="coach.gender">Indefinido</label>
-    </div>
-
-    <label for="">Teléfono</label>
-    <input name="phone" ng-model="coach.phone" type="text" class="form-control">
-
-    <label for="">Usuario</label>
-    <input name="userName" ng-model="coach.userName" type="text" class="form-control" >
-
-    <label for="">Contraseña</label>
-    <input name="password" ng-model="coach.password" type="password" class="form-control" >
-
-    <label for="">iamgen</label>
-    <input name="image" ng-model="coach.image" type="text" class="form-control" >
-
-    <label for="">age</label>
-    <input name="age" ng-model="age.password" type="text" class="form-control" >
-
-    <label for="">emergContact</label>
-    <input name="emergContact" ng-model="coach.emergContact" type="text" class="form-control" >
-
-    <label for="">Tipo de usuario</label>
-    <select name="idType" ng-model="coach.idType">
-      <option value="">Seleccione la opción</option>
-      <option value="cliente">vip</option>
-      <option value="coach">bcbdcu</option>
-    </select>
-
-    <label for="">entrenador</label>
-    <input name="coach" ng-model="coach.coach" type="text" class="form-control" >
-
-    <label for="">status</label>
-    <select name="status" ng-model="coach.status">
-      <option value="">Seleccione la opción</option>
-      <option value="active">activo</option>
-      <option value="desabled">deshabilitado</option>
-    </select>
-
-    <input type="submit" value="Register" ng-click="coach.save()" >
-  </form>
-
-
-</section>
-
-
 
 <div class="container-fluid">
   <div class="row coachView">
-    <div class="dateRequested col-xs-12 col-sm-6 col-lg-2">
-      <table class="col-xs-12">
-        <thead>
-          <tr>
-            <th><h3 class="col-xs-12">Solicitadas</h3></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="card">
-
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="dateAproved col-xs-12 col-sm-6 col-lg-2">
-      <table class="col-xs-12">
-        <thead>
-          <tr>
-            <th><h3 class="col-xs-12">Aceptadas</h3></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="contClient col-xs-12 col-sm-12 col-lg-8">
-      <div class="infPersonal">
-
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      <div class="dateRequested col-xs-12 col-sm-6 col-md-12 col-lg-12">
+        <h3 class="col-xs-12">Solicitadas</h3>
+        <table class="col-xs-12">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="appointment in coach.inReviewAppointment">
+              <td>{{appointment.clientName, appointment.clientFirstName}}</td>
+              <td>{{appointment.date}}</td>
+              <td><input type="submit" value="aceptar" ng-click="coach.changeStateAccepted(appointment)"></td>
+              <td><input type="submit" value="rechazar" ng-click="coach.changeStateDenied(appointment)"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+      <div class="dateAproved col-xs-12 col-sm-6 col-md-12 col-lg-12">
+        <h3 class="col-xs-12">Aceptadas</h3>
+        <table class="col-xs-12">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="appointment in coach.acceptedAppointment">
+              <td>{{appointment.clientName, appointment.clientFirstName}}</td>
+              <td>{{appointment.date}}</td>
+              <td><input type="submit" value="Hacer mediciones" ng-click="coach.doMeasurements(appointment)"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="contClient col-xs-12 col-sm-12 col-md-8 col-lg-8">
+      <p><span>{{coach.clientName}}</span> {{coach.clientFirstName}}</p>
       <form class="frmSize">
+        <div class="form-group col-xs-6">
+          <label for="">Cédula</label>
+          <input class="form-control col-xs-12" type="text" name="id" ng-model="coach.id" disabled="disabled">
+        </div>
+        <div class="form-group col-xs-6">
+          <label for="">Género</label>
+          <input class="form-control col-xs-12" type="text" name="gender" ng-model="coach.gender" disabled="disabled">
+        </div>
+
         <h3 class="col-xs-12">Parámetros corporales</h3>
+
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Estatura</label>
           <input class="form-control col-xs-12" type="number" ng-model="?.height">

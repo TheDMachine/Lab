@@ -16,19 +16,32 @@
   <body>
     <div ui-view></div>
 
+    <!-- <div ng-controller="tabCtrl" layout="column">
+          <md-toolbar>
+            <h2 class="md-toolbar-tools">
+              <span>Laboratorio 1</span>
+            </h2>
+          </md-toolbar>
+          <md-tabs md-stretch-tabs md-selected="selectedIndex">
+          <md-tab label="Inicio de sesión"></md-tab>
+          <md-tab label="Landing"></md-tab>
+          <md-tab label="tab 3"></md-tab>
+      </md-tabs>
+      <div id="content" ui-view flex> </div>
+    </div> -->
+    
+
     <!-- Scripts Generales -->
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- Angular -->
     <script src="./bower_components/angular/angular.min.js"></script>
       <!-- Dependencias de Angular -->
+      <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
       <script src="./bower_components/angular-css/angular-css.min.js"></script>
       <script src="./bower_components/angular-aria/angular-aria.js"></script>
       <script src="./bower_components/angular-animate/angular-animate.js"></script>
       <script src="./bower_components/angular-material/angular-material.js"></script>
-      
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
-      
       
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
 
@@ -37,6 +50,7 @@
     <script src="index.route.js"></script>
       <!-- Servicios -->
       <script src="components/users/user.service.js"></script>
+      <script src="components/services/appointment.service.js"></script>
       <!-- Controlador -->
       <script src="components/users/user.controller.js"></script>
       <script src="components/clients/client.controller.js"></script>

@@ -2,14 +2,14 @@
   angular
     .module('myApp')
     .controller('clientAccountCtrl', clientAccountCtrl);
-    function clientAccountCtrl(userService, $scope){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function clientAccountCtrl(userService, $scope, appointmentService){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
-      var vm.modUser = {};
-      var vm.userIn = {};
+      vm.userIn = {};
 
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.users = userService.getUsers();
+        vm.appointments = appointmentService.getAppointment();
 
         for (var i = 0; i<vm.users.length; i++) {
          if (vm.users[i].logIn == true) {
@@ -19,60 +19,88 @@
       }init();
 
       vm.getInfo = function(puser){
-          vm.id = puser.id;
-          vm.name = puser.name;
-          vm.secondName = puser.secondName;
-          vm.firstName = puser.firstName;
-          vm.lastName = puser.lastName;
-          vm.nationality = puser.nationality;
-          vm.idType = puser.idType;
-          vm.myDate = puser.myDate;
-          vm.gender = puser.gender;
-          vm.phone = puser.phone;
-          vm.userName = puser.userName;
-          vm.password = puser.password;
-          vm.image = puser.image;
-          vm.emergContact = puser.emergContact;
+          vm.userIn.name = puser.name;
+          vm.userIn.secondName = puser.secondName;
+          vm.userIn.firstName = puser.firstName;
+          vm.userIn.lastName = puser.lastName;
+          vm.userIn.nationality = puser.nationality;
+          vm.userIn.idType = puser.idType;
+          vm.userIn.myDate = puser.myDate;
+          vm.userIn.gender = puser.gender;
+          vm.userIn.phone = puser.phone;
+          vm.userIn.userName = puser.userName;
+          vm.userIn.password = puser.password;
+          vm.userIn.image = puser.image;
+          vm.userIn.emergContact = puser.emergContact;
       }
 
-      vm.update = function(){
-        /*
-        var vm.modUser = {
-          id : vm.id,
-          name : vm.name,
-          secondName : vm.secondName,
-          firstName : vm.firstName,
-          lastName : vm.lastName,
-          nationality : vm.nationality,
-          idType : vm.idType,
-          myDate : vm.myDate,
-          gender : vm.gender,
-          phone : vm.phone,
-          userName : vm.userName,
-          password : vm.password,
-          image : vm.image,
-          age : vm.age,
-          emergContact : vm.emergContact,
-          userType : vm.userType,
-          coach : vm.coach,
+      vm.update = function(pUpdateUser){
+        var modifyUser = {
+          id : vm.userIn.id,
+          name : vm.userIn.name,
+          secondName : vm.userIn.secondName,
+          firstName : vm.userIn.firstName,
+          lastName : vm.userIn.lastName,
+          nationality : vm.userIn.nationality,
+          idType : vm.userIn.idType,
+          myDate : vm.userIn.myDate,
+          gender : vm.userIn.gender,
+          phone : vm.userIn.phone,
+          userName : vm.userIn.userName,
+          password : vm.userIn.password,
+          image : vm.userIn.image,
+          age : vm.userIn.age,
+          emergContact : vm.userIn.emergContact,
+          userType : vm.userIn.userType,
+          coachName : vm.userIn.coachName,
           logIn : false,
           status : 'active'
-
-        };*/
-
-        for (var i = 0; i<vm.users.length; i++) {
-         if (vm.users[i].logIn == true) {
-          vm.users[i] = vm.userIn;
-         } 
-       }
-
-        userService.setUsers(vm.users);
+        };
+       
+        userService.updateUser(modifyUser);
         clean();
         init();
       }
 
       function clean(){
-        vm.user = {};
+          vm.userIn='';
+      }
+
+      vm.setAppointment = function(pDate){
+        var bError =  false;
+        var errorMsj = '';
+        var successMsj = '';
+        errorMsj = getElementById('#ErrorMessage');
+        successMsj = getElementById('#SuccessMessage');
+
+        var appointmentInfo = {
+          clientId : vm.userIn.id,
+          clientName : vm.userIn.name,
+          clientFirstName : vm.userIn.firstName,
+          clientGender : vm.userIn.gender,
+          coachName : vm.userIn.coachName,
+          date : pDate,
+          state : 'Revisión'
+        };
+
+        if (bError === true) {
+          errorMsj.value = 'Fecha no disponible';
+        }else{
+          successMsj.value = 'La solicitud ha sido enviada exitosamente';
+        };
+
+        appointmentService.setAppointment(appointmentInfo);
+      }
+
+      vm.appointmentsStatus= function(){
+        var appointments = appointmentService.getAppointment();
+        var clientAppointments = [];
+        for (var i = 0; i < appointments.length; i++) {
+          if (vm.userIn.id == appointments[i].clientId) {
+            clientAppointments.push(appointments);
+          }
+        }
+        return clientAppointments;
       }
 
     }
