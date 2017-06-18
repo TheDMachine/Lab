@@ -1,28 +1,28 @@
 (function(){
   angular
-    .module('myApp')
+    .module('myApp', ['ui.router','ngMessages','ngMaterial','ngCookies'])
     .config(configuration);
     function configuration($stateProvider, $urlRouterProvider){ //stateProvider
       $stateProvider
-        .state('user',{
-          url : '/users', //ruta del url del estado
-          templateUrl : 'components/users/user.view.html',//vista que se va a cargar para este estado
-          controller: 'userAccountCtrl',
+        .state('admin',{
+          url : '/admin', //ruta del url del estado
+          templateUrl : 'components/users/admin.view.html',//vista que se va a cargar para este estado
+          controller: 'adminAccountCtrl',
           controllerAs: 'user'
         })
         .state('login',{
-            url:'/login',
-            templateUrl: 'components/users/login.view.html',
-            controller: 'loginController',
-            controllerAs:'login'
-        })
-        .state('login',{
           url:'/login',
-          templateUrl:'login.view.html',
+          templateUrl:'components/login/login.view.html',
           controller:'LoginController',
           controllerAs:'vm'
         })
+        .state('client',{
+          url : '/client', //ruta del url del estado
+          templateUrl : 'components/client/client.view.html',//vista que se va a cargar para este estado
+          controller: 'clientAccountCtrl',
+          controllerAs: 'client'
+        })
 
-      $urlRouterProvider.otherwise('/users');
+      $urlRouterProvider.otherwise('/admin');
     }
 })();

@@ -9,6 +9,7 @@
       setUsers : _setUsers,
       getUsers : _getUsers,
       updateUser : _updateUser
+      findUsers:_findUsers
     };
     return publicAPI; // todas las funciones que sean llamadas por ajax deben estar debajo del return, para que cuando angular corra el script haga el return y devuelva el api , las funciones debajo del return son privadas y se devuelve el api que es el que contiene las funciones
 
@@ -36,6 +37,14 @@
       }
       localStorage.setItem('lsUsersList', JSON.stringify(usersList));
     }
+    function _findUsers(pUsernameToFind){
+      var userStorage = _getUsers();
+     for (var i = 0; i < userStorage.length; i++) {
+       if(usersStorage[i].userName == pUsernameToFind){
+         return usersStorage[i];
+       }
+     }
+   }
 
 
   }

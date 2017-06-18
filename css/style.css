@@ -27,6 +27,7 @@ body{
 md-toolbar h1{
   font-size: 1.2rem;
   margin: 0;
+  color: #fff;
 }
 
 md-toolbar{
@@ -36,4 +37,30 @@ md-toolbar{
 
 .hint{
   font-size: 0.8rem;
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){
+  background: #1E88E5;
+}
+
+md-select{
+  margin: 0;
+}
+
+table{
+  font-size: 0.85rem;
+}
+
+th{
+  font-weight: 500;
+}
+
+#logOut{
+  float: right;
+}
+
+md-toolbar:after{
+  clear: both;
+  display: block;
+  content: '';
 }

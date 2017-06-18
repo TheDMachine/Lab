@@ -1,12 +1,43 @@
+<div layout="column" ng-cloak ng-init="view = 1">
 
-<div ng-controller="userAccountCtrl as user" layout="column" ng-cloak>
-
-<md-toolbar>
-  <h1>Hola <span>{{user.name}}</span></h1>
+<md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+  <h1>Admin Platform</h1>
+  <md-button ng-click="view = 1" ng-style="view === 1 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Registros</md-button>
+  <md-button ng-click="view = 2" ng-style="view === 2 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Usuarios</md-button>
+  <span flex></span>
+  <md-button id="logOut" class="layout-align-end-start" ng-click="user.logOut()">Cerrar sesión</md-button>
 </md-toolbar>
 
-  <md-content layout-padding>
-    <form name="userForm">
+  <table id="tblDatos" ng-show="view == 2" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Cédula</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Usuario</th>
+      <th>Rol</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in user.users">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.firstName}}</td>
+      <td>{{item.userName}}</td>
+      <td>{{item.userType}}</td>
+      <td>
+        <md-select name="status" ng-model="item.status" required>
+          <md-option value="active">Activo</md-option>
+          <md-option value="inactive">Inactivo</md-option>
+        </md-select>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  <md-content layout-padding ng-show="view == 1">
+    <form name="userForm" novalidate>
       <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
 
         <md-input-container>
@@ -17,12 +48,13 @@
       <div layout-gt-sm="row">
         <md-input-container class="md-block" flex-gt-sm>
           <label class="md-primary">Cédula</label>
-          <input name="id" ng-model="user.id" ng-pattern="/^[0-9]{3}-[0-9]{2}-[0-9]{4}$/" />
+          <input name="id" ng-model="user.id" ng-pattern="/^[0-9]{9}$/" />
+          <!--ng-pattern="/^[0-9]{1}-[0-9]{2}-[0-9]{4}$/"-->
 
           <div class="hint" ng-if="showHints"># ########</div>
 
           <div ng-messages="userForm.id.$error" ng-if="!showHints">
-            <div ng-message="pattern">###-##-#### - Porfavor ingrese un número de identificación válido.</div>
+            <div ng-message="pattern">###-##-#### - Ingrese un número de identificación válido.</div>
           </div>
         </md-input-container>
 
@@ -30,7 +62,7 @@
           <label>Primer nombre</label>
           <input md-maxlength="30" required name="name" ng-model="user.name" />
 
-          <div class="hint" ng-if="showHints">Ingresa cual es tu primer nombre porfavor.</div>
+          <div class="hint" ng-if="showHints">Ingrese su primer nombre.</div>
 
           <div ng-messages="userForm.name.$error" ng-if="!showHints">
             <div ng-message="required">El primer nombre es requerido.</div>
@@ -112,42 +144,96 @@
           <label>Fecha de nacimiento</label>
           <md-datepicker ng-model="user.myDate" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
         </md-input-container>
+<<<<<<< HEAD:components/users/user.view.html
         <md-radio-group layout="row" layout-align="start center" ng-model="user.genre">
             <md-radio-button value="male" class="md-primary">Masculino</md-radio-button>
             <md-radio-button value="female">Femenino</md-radio-button>
             <md-radio-button value="undefined">Indefinido</md-radio-button>
+=======
+
+        <md-radio-group layout="row" layout-align="start center" ng-model="user.gender">
+            <md-radio-button name="gender" value="male" class="md-primary">Masculino</md-radio-button>
+            <md-radio-button name="gender" value="female">Femenino</md-radio-button>
+            <md-radio-button name="gender" value="undefined">Indefinido</md-radio-button>
+>>>>>>> LabUno/Luis:components/users/admin.view.html
         </md-radio-group>
 
       </div>
 
+      <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+      </div>
+
+      <div layout-gt-sm="row">
         <md-input-container class="md-block" flex-gt-sm>
-          <label>Email</label>
-          <input name="email" ng-model="user.email"
-                 required minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+          <label>Correo electrónico</label>
+          <input required name="emergContact" ng-model="user.emergContact"
+                 minlength="10" maxlength="100" ng-pattern="/^[a-z0-9]+[a-z0-9._]+@[a-z0-9]+\.[a-z.]{2,5}$"/>
 
-          <div class="hint" ng-show="showHints">How can we reach you?</div>
-
-          <div ng-messages="userForm.email.$error" ng-hide="showHints">
-            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+          <div ng-messages="userForm.emergContact.$error" ng-hide="showHints">
+            <div ng-message="pattern">
               Your email must be between 10 and 100 characters long and look like an e-mail address.
             </div>
           </div>
+        </md-input-container> 
+
+        <md-input-container > 
+        <label class="md-primary">Nombre de usuario</label>
+        <input name="userName" required ng-model="user.userName" ng-pattern="^[a-z0-9_-]{3,15}$" />
+
+        <div class="hint" ng-if="showHints">xyz08 OR abcd78</div>
+
+        <div ng-messages="userForm.userName.$error" ng-if="!showHints">
+          <div ng-message="pattern">xyz08 OR abcd78 - Ingrese un nombre de usuario válido</div>
+        </div>
         </md-input-container>
 
-        <div flex="5" hide-xs hide-sm>
-          <!-- Spacer //-->
-        </div>
+        <md-input-container> 
+          <label class="md-primary">Contraseña</label>
+          <input name="password" required ng-model="user.password" ng-pattern="/^[a-zA-Z0-9]*$/" />
 
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>Phone Number</label>
-          <input name="phone" ng-model="user.phone" ng-pattern="/^[(][0-9]{3}[)] [0-9]{3}-[0-9]{4}$/" />
+          <div class="hint" ng-if="showHints">xyz08 OR abcd78</div>
 
-          <div class="hint" ng-show="showHints">(###) ###-####</div>
-
-          <div ng-messages="userForm.phone.$error" ng-hide="showHints">
-            <div ng-message="pattern">(###) ###-#### - Please enter a valid phone number.</div>
+          <div ng-messages="userForm.password.$error" ng-if="!showHints">
+            <div ng-message="pattern">xyz08 OR abcd78 - Ingrese una contraseña válida.</div>
           </div>
         </md-input-container>
+      </div>
+
+      <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+      </div>
+
+      <div layout-gt-sm="row">
+
+        <md-input-container class="md-block" flex-gt-sm  >
+          <label class="md-primary">Teléfono</label>
+          <input name="phone" required ng-model="user.phone" ng-pattern="/^[0-9]{8}$/" />
+
+          <div class="hint" ng-if="showHints">########</div>
+
+          <div ng-messages="userForm.phone.$error" ng-if="!showHints">
+            <div ng-message="pattern">######### - Ingrese un número de teléfono válido.</div>
+          </div>
+        </md-input-container>
+        
+
+        <md-input-container>
+          <label>Tipo de usuario</label>
+          <md-select ng-model="user.userType" required>
+            <md-option><em>Ninguno</em></md-option>
+            <md-option ng-repeat="item in user.roles" ng-value="item">
+              {{item}}
+            </md-option>
+            <!--ng-disabled="$index === 0-->
+          </md-select>
+        </md-input-container>
+      </div>
+      <div layout-gt-sm="row">
+        <md-button ng-disabled="userForm.$invalid" type="submit" ng-click="user.save()">Submit</md-button>
+      </div>
+    </form>
+  </md-content>
 
         <style>
           /*
@@ -160,8 +246,3 @@
           }
         </style>
       </div>
-
-    </form>
-  </md-content>
-
-</div>
