@@ -23,6 +23,6 @@
           controllerAs: 'client'
         })
 
-      $urlRouterProvider.otherwise('/admin');
+      $urlRouterProvider.otherwise('/login');
     }
 })();
