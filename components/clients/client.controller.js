@@ -19,14 +19,6 @@
       }init();
 
       vm.getInfo = function(puser){
-          vm.userIn.name = puser.name;
-          vm.userIn.secondName = puser.secondName;
-          vm.userIn.firstName = puser.firstName;
-          vm.userIn.lastName = puser.lastName;
-          vm.userIn.nationality = puser.nationality;
-          vm.userIn.idType = puser.idType;
-          vm.userIn.myDate = puser.myDate;
-          vm.userIn.gender = puser.gender;
           vm.userIn.phone = puser.phone;
           vm.userIn.userName = puser.userName;
           vm.userIn.password = puser.password;

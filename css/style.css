@@ -1,4 +1,4 @@
-/*body{
+body{
   font-family: 'Roboto', sans-serif;
 }
 .inputdemoErrorsAdvanced .hint {
@@ -88,4 +88,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 #clientView #notifications{
   margin-top: 100px;
 }
-*/
+#clientView #filterMeas input{
+  background: #bcbaba;
+  border: none;
+}
