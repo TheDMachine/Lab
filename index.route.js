@@ -16,6 +16,12 @@
             controller: 'loginController',
             controllerAs:'login'
         })
+        .state('login',{
+          url:'/login',
+          templateUrl:'login.view.html',
+          controller:'LoginController',
+          controllerAs:'vm'
+        })
 
       $urlRouterProvider.otherwise('/users');
     }
