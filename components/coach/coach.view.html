@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-controller="coachAccounCtrl as coach">
   <div class="row coachView">
     <div class="dateRequested col-xs-12 col-sm-6 col-lg-2">
       <table class="col-xs-12">
@@ -9,9 +9,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="card">
-              
-            </td>
+            <td class="card"></td>
           </tr>
         </tbody>
       </table>
@@ -32,94 +30,110 @@
     </div>
     <div class="contClient col-xs-12 col-sm-12 col-lg-8">
       <div class="infPersonal">
-
+        <h3 class="col-xs-12 text-center">Informacion del cliente</h3>
+        <div class="form-group col-xs-12 col-sm-3">
+          <label for="">Cedula</label>
+          <input class="form-control" type="number" disabled="disabled" ng-model="coach.id">
+        </div>
+        <div class="form-group col-xs-12 col-sm-6">
+          <label for="">Nombre</label>
+          <input class="form-control" type="text" disabled="disabled" ng-model="coach.name">
+        </div>
+        <div class="form-group col-xs-12 col-sm-3">
+          <label for="">Fecha de las medidas</label>
+          <input class="form-control" type="date" disabled="disabled" ng-model="coach.date">
+        </div>
+        <div class="form-group col-xs-12 col-sm-3">
+          <label for="">Calculo de IMC</label>
+          <input class="form-control" type="text" disabled="disabled" ng-model="coach.clienteImc">
+        </div>
       </div>
       <form class="frmSize">
         <h3 class="col-xs-12">Parámetros corporales</h3>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Estatura</label>
-          <input class="form-control col-xs-12" type="number" ng-model="?.height">
+          <input class="form-control col-xs-12" type="number" ng-model="coach.height">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Peso</label>
-          <input class="form-control col-xs-12" type="number" ng-model="?.weight">
+          <input class="form-control col-xs-12" type="number" ng-model="coach.weight">
         </div>
         <h3 class="col-xs-12">Medidas corporales</h3>
         <h4 class="col-xs-12">Perímetros (en centimetros)</h4>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Bíceps</label>
-          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="?.bicepsLeft">
-          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="?.bicepsRight">
+          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="coach.bicepsLeft">
+          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="coach.bicepsRight">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Bíceps contraído</label>
-          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="?.bicepsLeftContracted">
-          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="?.bicepsRightContracted">
+          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="coach.bicepsLeftContracted">
+          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="coach.bicepsRightContracted">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Pantorrilla</label>
-          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="?.calfLeft">
-          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="?.calfRight">
+          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="coach.calfLeft">
+          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="coach.calfRight">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Muslo</label>
-          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="?.thighLeft">
-          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="?.thighRight">
+          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="coach.thighLeft">
+          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="coach.thighRight">
         </div>
         <h5 class="col-xs-12">Medidas únicas</h5>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Cintura</label>
-          <input class="form-control col-xs-12" type="number" ng-model="?.waist">
+          <input class="form-control col-xs-12" type="number" ng-model="coach.waist">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Abdomen</label>
-          <input class="form-control col-xs-12" type="number" ng-model="?.abdomen">
+          <input class="form-control col-xs-12" type="number" ng-model="coach.abdomen">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Cadera</label>
-          <input class="form-control col-xs-12" type="number" ng-model="?.hip">
+          <input class="form-control col-xs-12" type="number" ng-model="coach.hip">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Pecho</label>
-          <input class="form-control col-xs-12" type="number" ng-model="?.chest">
+          <input class="form-control col-xs-12" type="number" ng-model="coach.chest">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Espalda</label>
-          <input class="form-control col-xs-12" type="number" ng-model="?.back">
+          <input class="form-control col-xs-12" type="number" ng-model="coach.back">
         </div>
         <h4 class="col-xs-12">Pliegues (en milímetros)</h4>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Tríceps</label>
-          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="?.trícepsLeft">
-          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="?.trícepsRight">
+          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="coach.tricepsLeft">
+          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="coach.tricepsRight">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Subescapular</label>
-          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="?.subscapularLeft">
-          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="?.subscapularRight">
+          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="coach.subscapularLeft">
+          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="coach.subscapularRight">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Supraespinal</label>
-          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="?.supraespinalLeft">
-          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="?.supraespinalRight">
+          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="coach.supraespinalLeft">
+          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="coach.supraespinalRight">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Abdominal</label>
-          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="?.abdominalLeft">
-          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="?.abdominalRight">
+          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="coach.abdominalLeft">
+          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="coach.abdominalRight">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Muslo</label>
-          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="?.thighsLeft">
-          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="?.thighsRight">
+          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="coach.thighsLeft">
+          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="coach.thighsRight">
         </div>
         <div class="form-group col-xs-6 col-sm-2 col-lg-3">
           <label for="">Pantorrilla</label>
-          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="?.calvesLeft">
-          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="?.calvesRight">
+          <input class="form-control col-xs-12" placeholder="Izquierdo" type="number" ng-model="coach.calvesLeft">
+          <input class="form-control col-xs-12" placeholder="Derecho" type="number" ng-model="coach.calvesRight">
         </div>
         <div class="col-xs-12">
-          <input type="buttom" class="btn btn-primary col-xs-12 col-sm-4" value="Agregar">
+          <input type="submit" class="btn btn-primary col-xs-12 col-sm-4" value="Agregar" ng-click="coach.save()">
         </div>
       </form>
     </div>
