@@ -1,8 +1,8 @@
 (function(){
   angular
     .module('myApp')
-    .controller('coachAccounCtrl', coachAccounCtrl);
-    function coachAccounCtrl(userService, $scope, sizeService){ //se inyecta el service userService en el controlador para que se tenga acceso
+    .controller('coachAccountCtrl', coachAccountCtrl);
+    function coachAccountCtrl(userService, $scope, sizeService){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
 

@@ -26,11 +26,11 @@
           url : '/coaches', //ruta del url del estado
           templateUrl : 'components/coach/coach.view.html',//vista que se va a cargar para este estado
           // El resolve sirve para el controlador junto con la vista
-          resolve: {
+          /*resolve: {
             load: ['$ocLazyLoad', function($ocLazyLoad){
-              return $ocLazyLoad.load('./components/coach/coach.controller.js')
+              return $ocLazyLoad.load('./components/coach/size.controller.js')
             }]
-          },
+          },*/
           controller: 'coachAccountCtrl',
           controllerAs: 'coach'
         })
