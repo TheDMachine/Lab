@@ -2,7 +2,7 @@
   angular
     .module('myApp')
     .controller('adminAccountCtrl', adminAccountCtrl);
-    function adminAccountCtrl(userService, $scope){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function adminAccountCtrl(userService, $scope, $cookies){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
       $scope.view;
@@ -18,6 +18,7 @@
 
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.users = userService.getUsers();
+        console.log(vm.users);
       }init();
 
       vm.save= function(){
@@ -44,13 +45,34 @@
         };
         vm.age = vm.date.getFullYear() - vm.myDate.getFullYear();
         newUser.age = vm.age;
-        console.log(newUser);
-        userService.setUsers(newUser);
-        console.log(vm.users);
-        /*clean();*/
-        init();
-
-
+        if(vm.users.length == 0){
+          console.log(newUser);
+          userService.setUsers(newUser);
+          document.querySelector('.success').innerHTML = 'Usuario registrado correctamente!';
+          console.log(vm.users);
+          /*clean();*/
+          init();
+          return;
+        }
+        for(var i = 0; i < vm.users.length; i++){
+          if(newUser.id == vm.users[i].id){
+            document.querySelector('.error').innerHTML = 'Este usuario ya existe, porfavor ingrese otro';
+            return;
+          }
+          else if(newUser.userName == vm.users[i].userName){
+            document.querySelector('.error').innerHTML = 'El nombre de usuario ya existe, porfavor ingrese otro';
+            return;
+          }
+          else{
+            console.log(newUser);
+            userService.setUsers(newUser);
+            document.querySelector('.success').innerHTML = 'Usuario registrado correctamente!';
+            console.log(vm.users);
+            /*clean();*/
+            init();
+            return;
+          }
+        }
       };
 
       vm.verifyUser = function(userType){
@@ -104,10 +126,9 @@
           userType : vm.userType,
           logIn : false,
           status : 'active'
-
-          $scope.submitDisable = false;
-          $scope.updateDisable = true;
         }
+        $scope.submitDisable = false;
+        $scope.updateDisable = true;
         userService.updateUser(editUser);
         init();
         clean();

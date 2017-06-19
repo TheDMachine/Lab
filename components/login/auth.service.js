@@ -16,7 +16,13 @@
     }
     function _validateFields(pUserField, pPassField, userFound){
       if(userFound.userName == pUserField && userFound.password == pPassField){
-        _redirectTo(userFound);
+        if(userFound.status == 'active'){
+          _redirectTo(userFound);
+        }
+        else{
+          document.querySelector('.blocked').innerHTML = 'Su cuenta ha sido bloqueada, contáctese con el administrador';
+          return;
+        }
       }else {
         _redirectTo(false);
       }

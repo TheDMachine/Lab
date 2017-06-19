@@ -80,3 +80,13 @@ md-toolbar:after{
 .btn-info{
   padding: 2% 12%;
 }
+
+.error{
+  color: red;
+  margin: 1%;
+}
+
+.success{
+  color: #1bc98e;
+  margin: 1%;
+}

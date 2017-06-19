@@ -154,10 +154,6 @@
           <label>Fecha de nacimiento</label>
           <md-datepicker ng-model="user.myDate" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
         </md-input-container>
-        <md-radio-group layout="row" layout-align="start center" ng-model="user.genre">
-            <md-radio-button value="male" class="md-primary">Masculino</md-radio-button>
-            <md-radio-button value="female">Femenino</md-radio-button>
-            <md-radio-button value="undefined">Indefinido</md-radio-button
 
         <md-radio-group layout="row" layout-align="start center" ng-model="user.gender">
             <md-radio-button name="gender" value="male" class="md-primary">Masculino</md-radio-button>
@@ -247,6 +243,8 @@
           </div>
         </md-input-container>
       </div>
+      <p class="error"></p>
+      <p class="success"></p>
       <div layout-gt-sm="row">
         <md-button ng-disabled="userForm.$invalid || submitDisable" type="submit" ng-click="user.save()">Submit</md-button>
       </div>
