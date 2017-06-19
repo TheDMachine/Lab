@@ -42,7 +42,7 @@ md-toolbar{
 md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){
   background: #1E88E5;
 }
-
+/*Inicio de estilos del view del client*/
 #clientView{
   background-image: url(../img/backgClient1.jpg);
   background-size: cover;
@@ -50,7 +50,10 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 }
 #clientView #NameImgSpace{
   margin-top: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
+}
+#clientView #NameImgSpace img{
+  margin-left: 5%;
 }
 #clientView #NameImgSpace .md-button{
   color: #fff;
@@ -60,10 +63,17 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
   background-color:  rgba(239, 192, 29, 0.4);
   transition: 2s;
 }
+#clientView #NameImgSpace div img{
+  margin: 0 auto;
+}
+#clientView #NameImgSpace div .md-button{
+  align-content: center;
+}
 #clientView div h3{
   color: #fff;
   letter-spacing: 1px;
   margin-left: 2%;
+  text-align: center;
 }
 
 #clientView #forms-msj #ModInfo .well, #clientView #forms-msj #clientMeasurement .well{
@@ -85,10 +95,12 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 #clientView #forms-msj #coachAsigne{
   color: #464644;
 }
+#clientView #forms-msj #forms{
+  margin-bottom: 30px;
+}
 #clientView #forms-msj #motivationMsj p{
   font-size: 2.857em;
   text-align: center;
-  padding-top: 30px;
 }
 #clientView .buttonCollapse{
   background: #efc01d;
@@ -97,18 +109,57 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
   margin-top: 30px;
   outline: none;
 }
-#clientView .buttonCollapse:hover{
-  transition: 2s;
-  background: #f9da6e;
-}
 #clientView div p{
   color: #fff;
 }
-
 #clientView #notifications{
   margin-top: 100px;
 }
-#clientView #filterMeas input{
-  background: #bcbaba;
-  border: none;
+#clientView #notifications p span{
+  color: #f11616;
 }
+#clientView #notifications p{
+  font-size: 1.286em;
+  margin-left: 2%;
+  margin-bottom: 20px;
+}
+#clientView #filterMeas div input{
+  border-radius: 5px;
+  border: none; 
+  margin-left: 2%;
+}
+#clientView #notifications table, #clientView #filterMeas table{
+  margin-left: 2%;
+  margin-bottom: 60px;
+}
+#clientView #notifications table thead tr th, #clientView #filterMeas table thead tr th{
+  color: #fff;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d1cece;
+}
+#clientView #notifications table tbody tr td, #clientView #filterMeas table tbody tr td{
+  color: #fff;
+  border-bottom: 1px solid #d1cece;
+}
+/*Insertar estilos diferentes en media queries*/
+@media only screen and (max-width:992px){
+  #clientView #forms-msj #forms{
+  margin-bottom: 200px;
+  }
+}
+@media only screen and (max-width:768px){
+  #clientView #forms-msj #motivationMsj p{
+  font-size: 2.286em;
+  text-align: center;
+  }
+  #clientView #forms-msj #forms{
+  margin-bottom: 100px;
+  }
+}
+
+#clientView #filterMeas p{
+  font-size: 1.286em;
+  margin-left: 2%;
+  margin-bottom: 20px;
+}
+/*Fin de estilos del view del client*/
