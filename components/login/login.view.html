@@ -1,0 +1,12 @@
+<form ng-submit="vm.login()" novalidate name="frmLogin">
+<md-input-container layout="column">
+  <label>Usuario</label>
+  <input type="text" name="username" ng-model="vm.username" required/>
+</md-input-container>
+<md-input-container layout="column">
+  <label>Contraseña</label>
+  <input type="password" name="password" ng-model="vm.password" required/>
+</md-input-container>
+<p class="blocked"></p>
+<md-button type="submit" ng-disabled="frmLogin.$invalid">Iniciar Sesión</md-button>
+</form>

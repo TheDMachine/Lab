@@ -1,0 +1,92 @@
+body{
+  font-family: 'Roboto', sans-serif;
+}
+.inputdemoErrorsAdvanced .hint {
+
+    position: absolute;
+    left: 2px;
+    right: auto;
+    bottom: 7px;
+
+    font-size: 12px;
+    line-height: 14px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+
+    color: grey;
+  }
+  .inputdemoErrorsAdvanced .hint.ng-hide,
+  .inputdemoErrorsAdvanced .hint.ng-enter,
+  .inputdemoErrorsAdvanced .hint.ng-leave.ng-leave-active {
+    bottom: 26px;
+    opacity: 0; }
+  .inputdemoErrorsAdvanced .hint.ng-leave,
+  .inputdemoErrorsAdvanced .hint.ng-enter.ng-enter-active {
+    bottom: 7px;
+    opacity: 1; }
+
+md-toolbar h1{
+  font-size: 1.2rem;
+  margin: 0;
+  color: #fff;
+}
+
+md-toolbar{
+  min-height: 0;
+  padding: 1%;
+}
+
+.hint{
+  font-size: 0.8rem;
+}
+
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){
+  background: #1E88E5;
+}
+
+md-select{
+  margin: 0;
+}
+
+table{
+  font-size: 0.85rem;
+}
+
+th{
+  font-weight: 500;
+}
+
+#logOut{
+  float: right;
+}
+
+md-toolbar:after{
+  clear: both;
+  display: block;
+  content: '';
+}
+
+.btn-info, .btn-danger{
+  border-radius: 3px;
+  border: none;
+  padding: 2% 5%;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+.buttons{
+  text-align: center;
+}
+
+.btn-info{
+  padding: 2% 12%;
+}
+
+.error{
+  color: red;
+  margin: 1%;
+}
+
+.success{
+  color: #1bc98e;
+  margin: 1%;
+}

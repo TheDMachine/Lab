@@ -1,0 +1,267 @@
+<div layout="column" ng-cloak ng-init="view = 1">
+
+<md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+  <h1>Admin Platform</h1>
+  <md-button ng-click="view = 1" ng-style="view === 1 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Registros</md-button>
+  <md-button ng-click="view = 2" ng-style="view === 2 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Usuarios</md-button>
+  <span flex></span>
+  <md-button id="logOut" class="layout-align-end-start" ng-click="user.logOut()">Cerrar sesión</md-button>
+</md-toolbar>
+
+  <table id="tblDatos" ng-show="view == 2" class="table table-striped">
+  <thead>
+    <tr>
+      <th>Cédula</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Usuario</th>
+      <th>Rol</th>
+      <th>Estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in user.users">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.firstName}}</td>
+      <td>{{item.userName}}</td>
+      <td>{{item.userType}}</td>
+      <td>
+        <md-select name="status" ng-model="item.status" ng-change="user.updateStatus(item)" required>
+          <md-option value="active">Activo</md-option>
+          <md-option value="inactive">Inactivo</md-option>
+        </md-select>
+      </td>
+      <td class="buttons" ng-click="user.getInfo(item)">
+        <button class="btn-info">
+          Editar
+        </button>
+      </td>
+      <td class="buttons">
+        <button class="btn-danger">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  <md-content layout-padding ng-show="view == 1">
+    <form name="userForm" novalidate autocomplete="off">
+      <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
+
+        <md-input-container>
+          <md-switch ng-model="showHints">Showing {{showHints ? "Hints" : "Errors"}}</md-switch>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label class="md-primary">Cédula</label>
+          <input name="id" ng-model="user.id" ng-pattern="/^[0-9]{9}$/" />
+          <!--ng-pattern="/^[0-9]{1}-[0-9]{2}-[0-9]{4}$/"-->
+
+          <div class="hint" ng-if="showHints"># ########</div>
+
+          <div ng-messages="userForm.id.$error" ng-if="!showHints">
+            <div ng-message="pattern">###-##-#### - Ingrese un número de identificación válido.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Primer nombre</label>
+          <input md-maxlength="30" required name="name" ng-model="user.name" />
+
+          <div class="hint" ng-if="showHints">Ingrese su primer nombre.</div>
+
+          <div ng-messages="userForm.name.$error" ng-if="!showHints">
+            <div ng-message="required">El primer nombre es requerido.</div>
+            <div ng-message="md-maxlength">El primer nombre tiene que ser menor a 30 caracteres.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Segundo nombre</label>
+          <input md-maxlength="30" required name="secondName" ng-model="user.secondName" />
+
+          <div class="hint" ng-if="showHints">Ingresa cual es tu primer nombre porfavor.</div>
+
+          <div ng-messages="userForm.secondName.$error" ng-if="!showHints">
+            <div ng-message="required">El segundo nombre es requerido.</div>
+            <div ng-message="md-maxlength">El segundo nombre tiene que ser menor a 30 caracteres.</div>
+          </div>
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        </div>
+        <div layout-gt-sm="row">
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Primer apellido</label>
+          <input md-maxlength="30" required name="firstName" ng-model="user.firstName" />
+
+          <div class="hint" ng-if="showHints">Ingresa cual es tu primer apellido porfavor.</div>
+
+          <div ng-messages="userForm.firstName.$error" ng-if="!showHints">
+            <div ng-message="required">El primer apellido es requerido.</div>
+            <div ng-message="md-maxlength">El primer apellido tiene que ser menor a 30 caracteres.</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Segundo apellido</label>
+          <input md-maxlength="30" required name="lastName" ng-model="user.lastName" />
+
+          <div class="hint" ng-if="showHints">Ingresa cual es tu segundo apellido porfavor.</div>
+
+          <div ng-messages="userForm.lastName.$error" ng-if="!showHints">
+            <div ng-message="required">El segundo apellido es requerido.</div>
+            <div ng-message="md-maxlength">El segundo apellido tiene que ser menor a 30 caracteres.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Nacionalidad</label>
+          <input md-maxlength="30" required name="nationality" ng-model="user.nationality" />
+
+          <div class="hint" ng-if="showHints">Ingresa tu nacionalidad porfavor.</div>
+
+          <div ng-messages="userForm.nationality.$error" ng-if="!showHints">
+            <div ng-message="required">La nacionalidad es requerida.</div>
+            <div ng-message="md-maxlength">La nacionalidad tiene que ser menor a 30 caracteres.</div>
+          </div>
+        </md-input-container>
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+      </div>
+
+      <div layout-gt-sm="row">
+
+        <md-input-container flex="50">
+          <label>Tipo de idenfiticación</label>
+          <md-select name="idType" ng-model="user.idType" required>
+            <md-option value="tim">TIM</md-option>
+            <md-option value="cdi">Cédula de identificación</md-option>
+          </md-select>
+        </md-input-container>
+
+        <md-input-container flex-gt-xs flex="20">
+          <label>Fecha de nacimiento</label>
+          <md-datepicker ng-model="user.myDate" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
+        </md-input-container>
+
+        <md-radio-group layout="row" layout-align="start center" ng-model="user.gender">
+            <md-radio-button name="gender" value="male" class="md-primary">Masculino</md-radio-button>
+            <md-radio-button name="gender" value="female">Femenino</md-radio-button>
+            <md-radio-button name="gender" value="undefined">Indefinido</md-radio-button>
+        </md-radio-group>
+
+      </div>
+
+      <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Correo electrónico</label>
+          <input required name="emergContact" ng-model="user.emergContact"
+                 minlength="10" maxlength="100" ng-pattern="/^[a-z0-9]+[a-z0-9._]+@[a-z0-9]+\.[a-z.]{2,5}$"/>
+
+          <div ng-messages="userForm.emergContact.$error" ng-hide="showHints">
+            <div ng-message="pattern">
+              Your email must be between 10 and 100 characters long and look like an e-mail address.
+            </div>
+          </div>
+        </md-input-container>
+
+        <md-input-container >
+        <label class="md-primary">Nombre de usuario</label>
+        <input name="userName" required ng-model="user.userName" ng-pattern="^[a-z0-9_-]{3,15}$" />
+
+        <div class="hint" ng-if="showHints">xyz08 OR abcd78</div>
+
+        <div ng-messages="userForm.userName.$error" ng-if="!showHints">
+          <div ng-message="pattern">xyz08 OR abcd78 - Ingrese un nombre de usuario válido</div>
+        </div>
+        </md-input-container>
+
+        <md-input-container>
+          <label class="md-primary">Contraseña</label>
+          <input name="password" required ng-model="user.password" ng-pattern="/^[a-zA-Z0-9]*$/" />
+
+          <div class="hint" ng-if="showHints">xyz08 OR abcd78</div>
+
+          <div ng-messages="userForm.password.$error" ng-if="!showHints">
+            <div ng-message="pattern">xyz08 OR abcd78 - Ingrese una contraseña válida.</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+      </div>
+
+      <div layout-gt-sm="row">
+
+        <md-input-container class="md-block" flex-gt-sm flex="70"  >
+          <label class="md-primary">Teléfono</label>
+          <input name="phone" required ng-model="user.phone" ng-pattern="/^[0-9]{8}$/" />
+
+          <div class="hint" ng-if="showHints">########</div>
+
+          <div ng-messages="userForm.phone.$error" ng-if="!showHints">
+            <div ng-message="pattern">######### - Ingrese un número de teléfono válido.</div>
+          </div>
+        </md-input-container>
+
+
+        <md-input-container>
+          <label>Tipo de usuario</label>
+          <md-select ng-model="user.userType" ng-change="user.verifyUser(user.userType)" required>
+            <md-option><em>Ninguno</em></md-option>
+            <md-option ng-repeat="item in user.roles" ng-value="item">
+              {{item}}
+            </md-option>
+            <!--ng-disabled="$index === 0-->
+          </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm ng-show="user.client">
+          <label>Entrenador</label>
+          <input md-maxlength="30" name="coach" ng-model="user.coach" />
+
+          <div class="hint" ng-if="showHints">Ingrese su primer nombre.</div>
+
+          <div ng-messages="userForm.coach.$error" ng-if="!showHints">
+            <div ng-message="required">El entrenador es requerido.</div>
+            <div ng-message="md-maxlength">El nombre del entrenador tiene que ser menor a 30 caracteres.</div>
+          </div>
+        </md-input-container>
+      </div>
+      <p class="error"></p>
+      <p class="success"></p>
+      <div layout-gt-sm="row">
+        <md-button ng-disabled="userForm.$invalid || submitDisable" type="submit" ng-click="user.save()">Submit</md-button>
+      </div>
+      <div layout-gt-sm="row">
+        <md-button ng-disabled="userForm.$invalid || updateDisable" type="submit" ng-click="user.update()">Actualizar</md-button>
+      </div>
+    </form>
+  </md-content>
+
+        <style>
+          /*
+           * The Material demos system does not currently allow targeting the body element, so this
+           * must go here in the HTML.
+           */
+          body[dir=rtl] .hint {
+            right: 2px;
+            left: auto;
+          }
+        </style>
+      </div>
