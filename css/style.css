@@ -64,3 +64,19 @@ md-toolbar:after{
   display: block;
   content: '';
 }
+
+.btn-info, .btn-danger{
+  border-radius: 3px;
+  border: none;
+  padding: 2% 5%;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+.buttons{
+  text-align: center;
+}
+
+.btn-info{
+  padding: 2% 12%;
+}

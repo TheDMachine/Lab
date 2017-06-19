@@ -27,17 +27,27 @@
       <td>{{item.userName}}</td>
       <td>{{item.userType}}</td>
       <td>
-        <md-select name="status" ng-model="item.status" required>
+        <md-select name="status" ng-model="item.status" ng-change="user.updateStatus(item)" required>
           <md-option value="active">Activo</md-option>
           <md-option value="inactive">Inactivo</md-option>
         </md-select>
+      </td>
+      <td class="buttons" ng-click="user.getInfo(item)">
+        <button class="btn-info">
+          Editar
+        </button>
+      </td>
+      <td class="buttons">
+        <button class="btn-danger">
+          Eliminar
+        </button>
       </td>
     </tr>
   </tbody>
 </table>
 
   <md-content layout-padding ng-show="view == 1">
-    <form name="userForm" novalidate>
+    <form name="userForm" novalidate autocomplete="off">
       <div layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
 
         <md-input-container>
@@ -199,7 +209,7 @@
 
       <div layout-gt-sm="row">
 
-        <md-input-container class="md-block" flex-gt-sm  >
+        <md-input-container class="md-block" flex-gt-sm flex="70"  >
           <label class="md-primary">Teléfono</label>
           <input name="phone" required ng-model="user.phone" ng-pattern="/^[0-9]{8}$/" />
 
@@ -213,7 +223,7 @@
 
         <md-input-container>
           <label>Tipo de usuario</label>
-          <md-select ng-model="user.userType" required>
+          <md-select ng-model="user.userType" ng-change="user.verifyUser(user.userType)" required>
             <md-option><em>Ninguno</em></md-option>
             <md-option ng-repeat="item in user.roles" ng-value="item">
               {{item}}
@@ -221,9 +231,23 @@
             <!--ng-disabled="$index === 0-->
           </md-select>
         </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm ng-show="user.client">
+          <label>Entrenador</label>
+          <input md-maxlength="30" name="coach" ng-model="user.coach" />
+
+          <div class="hint" ng-if="showHints">Ingrese su primer nombre.</div>
+
+          <div ng-messages="userForm.coach.$error" ng-if="!showHints">
+            <div ng-message="required">El entrenador es requerido.</div>
+            <div ng-message="md-maxlength">El nombre del entrenador tiene que ser menor a 30 caracteres.</div>
+          </div>
+        </md-input-container>
       </div>
       <div layout-gt-sm="row">
-        <md-button ng-disabled="userForm.$invalid" type="submit" ng-click="user.save()">Submit</md-button>
+        <md-button ng-disabled="userForm.$invalid || submitDisable" type="submit" ng-click="user.save()">Submit</md-button>
+      </div>
+      <div layout-gt-sm="row">
+        <md-button ng-disabled="userForm.$invalid || updateDisable" type="submit" ng-click="user.update()">Actualizar</md-button>
       </div>
     </form>
   </md-content>

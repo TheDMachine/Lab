@@ -5,13 +5,16 @@
     function adminAccountCtrl(userService, $scope){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
-      vm.view = 1;
+      $scope.view;
+      $scope.updateDisable = true;
+      $scope.submitDisable = false;
       /*$scope.showHints = true;*/
       vm.roles = ['Administrador', 'Instructor', 'Cliente'];
 
         vm.myDate = new Date();
         vm.date = new Date();
         vm.isOpen = false;
+        vm.client = false;
 
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.users = userService.getUsers();
@@ -43,11 +46,83 @@
         newUser.age = vm.age;
         console.log(newUser);
         userService.setUsers(newUser);
-        clean();
+        console.log(vm.users);
+        /*clean();*/
         init();
 
 
       };
+
+      vm.verifyUser = function(userType){
+        if(userType == 'Cliente'){
+          vm.client = true;
+        }
+      };
+
+      vm.getInfo = function(puser){
+
+          vm.id = puser.id,
+          vm.name = puser.name,
+          vm.secondName = puser.secondName,
+          vm.firstName = puser.firstName,
+          vm.lastName = puser.lastName,
+          vm.nationality = puser.nationality,
+          vm.idType = puser.idType,
+          vm.myDate = puser.myDate,
+          vm.gender = puser.gender,
+          vm.phone = puser.phone,
+          vm.userName = puser.userName,
+          vm.password = puser.password,
+          vm.image = puser.image,
+          vm.age = puser.age,
+          vm.emergContact = puser.emergContact,
+          vm.userType = puser.userType,
+          vm.logIn = false,
+          vm.status = 'active'
+
+          $scope.view = 1;
+          $scope.updateDisable = false;
+          $scope.submitDisable = true;
+      }
+      vm.update = function(){
+        var editUser = {
+          id : vm.id,
+          name : vm.name,
+          secondName : vm.secondName,
+          firstName : vm.firstName,
+          lastName : vm.lastName,
+          nationality : vm.nationality,
+          idType : vm.idType,
+          myDate : vm.myDate,
+          gender : vm.gender,
+          phone : vm.phone,
+          userName : vm.userName,
+          password : vm.password,
+          image : vm.image,
+          age : vm.age,
+          emergContact : vm.emergContact,
+          userType : vm.userType,
+          logIn : false,
+          status : 'active'
+
+          $scope.submitDisable = false;
+          $scope.updateDisable = true;
+        }
+        userService.updateUser(editUser);
+        init();
+        clean();
+      }
+
+      vm.updateStatus = function(item){
+        for(var i = 0; i < vm.users.length; i++){
+          if(vm.users[i].id == item.id){
+            vm.users[i].status = item.status;
+            userService.updateUser(vm.users[i]);
+            console.log(vm.users);
+            break;
+          }
+        }
+      }
 
       vm.logOut = function(){
         $location.url('/login');
@@ -56,12 +131,6 @@
       vm.seeValue = function(item){
         console.log(item);
       };
-
-      vm.update = function(puser){
-          vm.user = puser.user;
-          vm.type = puser.type;
-          vm.coin = puser.coin;
-      }
 
       function clean(){
         vm.id = '';
