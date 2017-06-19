@@ -52,19 +52,38 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
   margin-top: 60px;
   margin-bottom: 60px;
 }
+#clientView #NameImgSpace .md-button{
+  color: #fff;
+  margin-left: 2%;
+}
+#clientView #NameImgSpace .md-button:hover{
+  background-color:  rgba(239, 192, 29, 0.4);
+  transition: 2s;
+}
 #clientView div h3{
   color: #fff;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  margin-left: 2%;
 }
-#clientView #forms-msj{
-  margin-top: 150px;
-}
+
 #clientView #forms-msj #ModInfo .well, #clientView #forms-msj #clientMeasurement .well{
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.9);
   border-color: transparent;
 }
+#clientView #forms-msj #forms .buttonForm{
+  background-color: transparent;
+  border: none;
+  color: #464644;
+}
+#clientView #forms-msj #forms button:hover{
+  background-color:  rgba(239, 192, 29, 0.4);
+  transition: 2s;
+}
 #clientView #forms-msj #forms div label{
-  color: #fff;
+  font-size: 1.286em;
+}
+#clientView #forms-msj #coachAsigne{
+  color: #464644;
 }
 #clientView #forms-msj #motivationMsj p{
   font-size: 2.857em;
@@ -76,6 +95,7 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
   border: none;
   color: #000;
   margin-top: 30px;
+  outline: none;
 }
 #clientView .buttonCollapse:hover{
   transition: 2s;
