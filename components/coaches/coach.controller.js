@@ -18,38 +18,39 @@
 
       vm.save = function(){
         var id = vm.id,
-        date = vm.date,
-        gender = vm.gender,
-        height = vm.height,
-        weight = vm.weight,
-        bicepsLeft = vm.bicepsLeft,
-        bicepsRight = vm.bicepsRight,
-        bicepsLeftContracted = vm.bicepsLeftContracted,
-        bicepsRightContracted = vm.bicepsRightContracted,
-        calfLeft = vm.calfLeft,
-        calfRight = vm.calfRight,
-        thighLeft = vm.thighLeft,
-        thighRight = vm.thighRight,
-        waist = vm.waist,
-        abdomen = vm.abdomen,
-        hip = vm.hip,
-        chest = vm.chest,
-        back = vm.back,
-        tricepsLeft = vm.tricepsLeft,
-        tricepsRight = vm.tricepsRight,
-        subscapularLeft = vm.subscapularLeft,
-        subscapularRight = vm.subscapularRight,
-        supraespinalLeft = vm.supraespinalLeft,
-        supraespinalRight = vm.supraespinalRight,
-        abdominalLeft = vm.abdominalLeft,
-        abdominalRight = vm.abdominalRight,
-        thighsLeft = vm.thighsLeft,
-        thighsRight = vm.thighsRight,
-        calvesLeft = vm.calvesLeft,
-        calvesRight = vm.calvesRight,
-        imc = sizeService.calImc(vm.height, vm.weight),
-        porcentFat = sizeService.calPorcentFat(vm.tricepsLeft, vm.tricepsRight, vm.subscapularLeft, vm.subscapularRight, vm.supraespinalLeft, vm.supraespinalRight, vm.abdominalLeft, vm.abdominalRight, vm.thighsLeft, vm.thighsRight, vm.calvesLeft, vm.calvesRight);
-        console.log(porcentFat);
+            date = vm.date,
+            gender = vm.gender,
+            height = vm.height,
+            weight = vm.weight,
+            bicepsLeft = vm.bicepsLeft,
+            bicepsRight = vm.bicepsRight,
+            bicepsLeftContracted = vm.bicepsLeftContracted,
+            bicepsRightContracted = vm.bicepsRightContracted,
+            calfLeft = vm.calfLeft,
+            calfRight = vm.calfRight,
+            thighLeft = vm.thighLeft,
+            thighRight = vm.thighRight,
+            waist = vm.waist,
+            abdomen = vm.abdomen,
+            hip = vm.hip,
+            chest = vm.chest,
+            back = vm.back,
+            tricepsLeft = vm.tricepsLeft,
+            tricepsRight = vm.tricepsRight,
+            subscapularLeft = vm.subscapularLeft,
+            subscapularRight = vm.subscapularRight,
+            supraespinalLeft = vm.supraespinalLeft,
+            supraespinalRight = vm.supraespinalRight,
+            abdominalLeft = vm.abdominalLeft,
+            abdominalRight = vm.abdominalRight,
+            thighsLeft = vm.thighsLeft,
+            thighsRight = vm.thighsRight,
+            calvesLeft = vm.calvesLeft,
+            calvesRight = vm.calvesRight,
+            imc = sizeService.calImc(vm.height, vm.weight),
+            porcentFat = sizeService.calPorcentFat(vm.tricepsLeft, vm.tricepsRight, vm.subscapularLeft, vm.subscapularRight, vm.supraespinalLeft, vm.supraespinalRight, vm.abdominalLeft, vm.abdominalRight, vm.thighsLeft, vm.thighsRight, vm.calvesLeft, vm.calvesRight);
+          console.log(porcentFat);
+
         var porcentMuscle = sizeService.calMuscle(porcentFat, weight);
         console.log(porcentMuscle);
 
@@ -169,17 +170,17 @@
         appointmentService.updateAppointment(pAppointment);
         init();
       }
-     vm.doMeasurements= function(pAppointment){
-      vm.clientName = pAppointment.clientName;
-      vm.clientFirstName = pAppointment.clientFirstName;
-      vm.id = pAppointment.clientId;
-      vm.gender = pAppointment.clientGender;
-     }
-    }
+       vm.doMeasurements= function(pAppointment){
+        vm.clientName = pAppointment.clientName;
+        vm.clientFirstName = pAppointment.clientFirstName;
+        vm.id = pAppointment.clientId;
+        vm.gender = pAppointment.clientGender;
+       }
 
-    vm.logOut = function(){
-        AuthService.logOut();
+       vm.logOut = function(){
+      AuthService.logOut();
       }
+    }
       
     // se establece un objeto de angular normal
 
