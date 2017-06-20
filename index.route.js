@@ -54,7 +54,18 @@
       controller: 'coachAccountCtrl',
       controllerAs: 'coach'
     })
+    .state('landing',{
+      url : '/landing',
+      templateUrl : 'components/landing/landing.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/landing/landing.controller.js')
+        }]
+      },
+      controller: 'landingAccountCtrl',
+      controllerAs: 'vm'
+    })
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/landing');
   }
 })();
