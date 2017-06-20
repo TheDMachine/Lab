@@ -2,6 +2,17 @@ body{
   font-family: 'Roboto', sans-serif;
 
 }
+
+#admin{
+  font-size: 2rem;
+}
+
+.hi{
+  margin: 0 1%;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
 .inputdemoErrorsAdvanced .hint {
 
     position: absolute;
@@ -50,7 +61,7 @@ md-select{
 }
 
 table{
-  font-size: 0.85rem;
+  font-size: 1.4rem;
 }
 
 th{
@@ -97,6 +108,14 @@ md-toolbar:after{
   color: red;
 }
 
+.menu{
+  color: #fff;
+}
+
+.md-button{
+  color: #fff;
+}
+
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
     border-color: #484b53;
     color: #484b53;
@@ -114,9 +133,9 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   margin: 3.5% 0;
 }
 
-md-card{
+#login-card{
   margin: 27.5% 0;
-  background: #1E88E5;
+  width: 40%;
 }
 /*Inicio de estilos del view del client*/
 #clientView #blackSpace{
