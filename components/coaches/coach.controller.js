@@ -2,14 +2,15 @@
   angular
     .module('myApp')
     .controller('coachAccountCtrl', coachAccountCtrl);
-    function coachAccountCtrl(userService, appointmentService, $scope, sizeService){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function coachAccountCtrl(userService, appointmentService, $scope, sizeService, AuthService){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
-      var newUser = {};
 
       vm.date = new Date();
       
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
+        vm.userIn = userService.findUsers(userService.getCookie());
+        console.log(vm.userIn);
         vm.users = userService.getUsers();
         vm.appointments = appointmentService.getAppointment();
         vm.size = sizeService.getSize();
@@ -18,7 +19,7 @@
       vm.save = function(){
         var id = vm.id,
         date = vm.date,
-        //genre = ?,
+        gender = vm.gender,
         height = vm.height,
         weight = vm.weight,
         bicepsLeft = vm.bicepsLeft,
@@ -55,7 +56,7 @@
         var newSize = {
           id: id,
           date: date,
-          //genre: genre,
+          gender: gender,
           height: height,
           weight: weight,
           bicepsLeft: bicepsLeft,
@@ -175,6 +176,10 @@
       vm.gender = pAppointment.clientGender;
      }
     }
+
+    vm.logOut = function(){
+        AuthService.logOut();
+      }
       
     // se establece un objeto de angular normal
 

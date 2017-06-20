@@ -1,15 +1,15 @@
 <section id="coachView">
 	<div id="blackSpace" class="row">
     	<div class="col-xs-offset-7 col-xs-5 col-sm-offset-10 col-sm-2">
-      	<md-button ng-click="vm.logOut()"> Cerrar Sesión </md-button>
-    </div>
+      		<md-button ng-click="vm.logOut()"> Cerrar Sesión </md-button>
+   		 </div>
   	</div>
   	<!-- Nombre del coach -->
   	<div id="NameImgSpace" class="row">
 	    <div class="col-xs-12 col-sm5 col-md-3 col-lg-3">
 	      <img src="img/1.jpg" alt="" class="img-responsive" width="200px" height="200px">
 	      <!-- <img class="col-xs-6 col-sm-4 col-md-3 col-lg-3 clientImage" ng-model="" alt="Description" width="200px" height="200px"/> -->
-	      <h3>¡Hola {{vm.userIn.name}} {{vm.userIn.firstName}}!</h3>
+	      <h3>¡Hola {{vm.userIn .name}} {{vm.userIn.firstName}}!</h3>
 	    </div>
 	    <div id="motivationMsj" class="col-sm-6 col-md-6 col-lg-offset-3 col-lg-5">
 	      <p>¡Lucho por mejorar la salud de los demás!</p>
@@ -18,7 +18,7 @@
  	<!-- Tablas de citas solicitadas y aceptadas-->
 	<div id="" class="row">
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-			<div class="dateRequested col-xs-12 col-sm-6 col-lg-2">
+			<div class="dateRequested col-xs-12 col-sm-6 col-md-12 col-lg-12">
 				<!-- Tablas de citas solicitadas-->
 				<h3 class="col-xs-12">Solicitadas</h3>
 	      		<table class="col-xs-12">
@@ -38,7 +38,7 @@
 		        	</tbody>
 		      	</table>
     		</div>
-	    	<div class="dateAproved col-xs-12 col-sm-6 col-lg-2">
+	    	<div class="dateAproved col-xs-12 col-sm-6 col-md-12 col-lg-12">
 	    		<!-- Tablas de citas solicitadas y aceptadas-->
 	    		<h3 class="col-xs-12">Aceptadas</h3>
 		      	<table class="col-xs-12">
@@ -115,12 +115,15 @@
         		<md-input-container flex-offset>
 	                <label>Bícep Izquierdo</label>
 	                <input name="bicepsLeft" type="number" ng-model="coach.bicepsLeft" required>
-	                <label>Bícep Derecho</label>
-	                <input name="bicepsRight" type="number" ng-model="coach.bicepsRight" required>
 	                <!-- Mensaje de retroalimentacion -->
 	                <div ng-messages="frmMeasurements.bicepsLeft.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
+              	</md-input-container>
+              	<md-input-container flex-offset>
+	                <label>Bícep Derecho</label>
+	                <input name="bicepsRight" type="number" ng-model="coach.bicepsRight" required>
+	                <!-- Mensaje de retroalimentacion -->
                 	<div ng-messages="frmMeasurements.bicepsRight.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
@@ -129,12 +132,15 @@
               	<md-input-container flex-offset>
 	                <label>Bícep contraído Izquierdo</label>
 	                <input name="bicepsLeftContracted" type="number" ng-model="coach.bicepsLeftContracted" required>
-	                <label>Bícep contraído Derecho</label>
-	                <input name="bicepsRightContracted" type="number" ng-model="coach.bicepsRightContracted" required>
 	                <!-- Mensaje de retroalimentacion -->
 	                <div ng-messages="frmMeasurements.bicepsLeftContracted.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
+              	</md-input-container>
+              	<md-input-container flex-offset>
+	                <label>Bícep contraído Derecho</label>
+	                <input name="bicepsRightContracted" type="number" ng-model="coach.bicepsRightContracted" required>
+	                <!-- Mensaje de retroalimentacion -->
                 	<div ng-messages="frmMeasurements.bicepsRightContracted.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
@@ -143,12 +149,15 @@
               	<md-input-container flex-offset>
 	                <label>Pantorrilla Izquierda</label>
 	                <input name="calfLeft" type="number" ng-model="coach.calfLeft" required>
-	                <label>Pantorrilla Derecha</label>
-	                <input name="calfRight" type="number" ng-model="coach.calfRight" required>
 	                <!-- Mensaje de retroalimentacion -->
 	                <div ng-messages="frmMeasurements.calfLeft.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
+              	</md-input-container>
+              	<md-input-container flex-offset>
+	                <label>Pantorrilla Derecha</label>
+	                <input name="calfRight" type="number" ng-model="coach.calfRight" required>
+	                <!-- Mensaje de retroalimentacion -->
                 	<div ng-messages="frmMeasurements.calfRight.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
@@ -157,12 +166,14 @@
               	<md-input-container flex-offset>
 	                <label>Muslo Izquierdo</label>
 	                <input name="thighLeft" type="number" ng-model="coach.thighLeft" required>
-	                <label>Muslo Derecho</label>
-	                <input name="thighRight" type="number" ng-model="coach.thighRight" required>
 	                <!-- Mensaje de retroalimentacion -->
 	                <div ng-messages="frmMeasurements.thighLeft.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
-                	</div>
+                	</div>              	</md-input-container>
+              	<md-input-container flex-offset>
+	                <label>Muslo Derecho</label>
+	                <input name="thighRight" type="number" ng-model="coach.thighRight" required>
+	                <!-- Mensaje de retroalimentacion -->
                 	<div ng-messages="frmMeasurements.thighRight.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
@@ -220,13 +231,16 @@
               	<md-input-container flex-offset>
 	                <label>Trícep Izquierdo</label>
 	                <input name="tricepsLeft" type="number" ng-model="coach.tricepsLeft" required>
-	                <label>Trícep Derecho</label>
-	                <input name="tricepsRight" type="number" ng-model="coach.tricepsRight" required>
 	                <!-- Mensaje de retroalimentacion -->
 	                <div ng-messages="frmMeasurements.tricepsLeft.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
-                	<div ng-messages="frmMeasurements.tricepsRight.$error">
+              	</md-input-container>
+              	<md-input-container flex-offset>
+	                <label>Trícep Derecho</label>
+	                <input name="tricepsRight" type="number" ng-model="coach.tricepsRight" required>
+	                <!-- Mensaje de retroalimentacion -->
+	                <div ng-messages="frmMeasurements.tricepsLeft.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
               	</md-input-container>
@@ -234,12 +248,15 @@
               	<md-input-container flex-offset>
 	                <label>Subescapular Izquierdo</label>
 	                <input name="subscapularLeft" type="number" ng-model="coach.subscapularLeft" required>
-	                <label>Subescapular Derecho</label>
-	                <input name="subscapularRight" type="number" ng-model="coach.subscapularRight" required>
 	                <!-- Mensaje de retroalimentacion -->
 	                <div ng-messages="frmMeasurements.subscapularLeft.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
+              	</md-input-container>
+              	<md-input-container flex-offset>
+	                <label>Subescapular Derecho</label>
+	                <input name="subscapularRight" type="number" ng-model="coach.subscapularRight" required>
+	                <!-- Mensaje de retroalimentacion -->
                 	<div ng-messages="frmMeasurements.subscapularRight.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
@@ -248,13 +265,16 @@
 				<md-input-container flex-offset>
 	                <label>Supraespinal Izquierdo</label>
 	                <input name="supraespinalLeft" type="number" ng-model="coach.supraespinalLeft" required>
-	                <label>Supraespinal Derecho</label>
-	                <input name="subscapularRight" type="number" ng-model="coach.supraespinalRight" required>
 	                <!-- Mensaje de retroalimentacion -->
 	                <div ng-messages="frmMeasurements.supraespinalLeft.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
-                	<div ng-messages="frmMeasurements.subscapularRight.$error">
+              	</md-input-container>
+              	<md-input-container flex-offset>
+	                <label>Supraespinal Derecho</label>
+	                <input name="supraespinalRight" type="number" ng-model="coach.supraespinalRight" required>
+	                <!-- Mensaje de retroalimentacion -->
+                	<div ng-messages="frmMeasurements.supraespinalRight.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
               	</md-input-container>
@@ -262,26 +282,33 @@
               	<md-input-container flex-offset>
 	                <label>Abdominal Izquierdo</label>
 	                <input name="abdominalLeft" type="number" ng-model="coach.abdominalLeft" required>
-	                <label>Abdominal Dercho</label>
-	                <input name="abdominalRight" type="number" ng-model="coach.abdominalRight" required>
 	                <!-- Mensaje de retroalimentacion -->
 	                <div ng-messages="frmMeasurements.abdominalLeft.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
+              	</md-input-container>
+              	<md-input-container flex-offset>
+	                <label>Abdominal Derecho</label>
+	                <input name="abdominalRight" type="number" ng-model="coach.abdominalRight" required>
+	                <!-- Mensaje de retroalimentacion -->
                 	<div ng-messages="frmMeasurements.abdominalRight.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
               	</md-input-container>
 
+
               	<md-input-container flex-offset>
 	                <label>Muslo Izquierdo</label>
 	                <input name="thighsLeft" type="number" ng-model="coach.thighsLeft" required>
-	                <label>Muslo Derecho</label>
-	                <input name="thighsRight" type="number" ng-model="coach.thighsRight" required>
 	                <!-- Mensaje de retroalimentacion -->
 	                <div ng-messages="frmMeasurements.thighsLeft.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
+              	</md-input-container>
+              	<md-input-container flex-offset>
+	                <label>Muslo Derecho</label>
+	                <input name="thighsRight" type="number" ng-model="coach.thighsRight" required>
+	                <!-- Mensaje de retroalimentacion -->
                 	<div ng-messages="frmMeasurements.thighsRight.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
@@ -290,12 +317,15 @@
               	<md-input-container flex-offset>
 	                <label>Pantorrilla Izquierda</label>
 	                <input name="calvesLeft" type="number" ng-model="coach.calvesLeft" required>
-	                <label>Pantorrilla Derecha</label>
-	                <input name="calvesRight" type="number" ng-model="coach.calvesRight" required>
 	                <!-- Mensaje de retroalimentacion -->
 	                <div ng-messages="frmMeasurements.calvesLeft.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
+              	</md-input-container>
+              	<md-input-container flex-offset>
+	                <label>Pantorrilla Derecha</label>
+	                <input name="calvesRight" type="number" ng-model="coach.calvesRight" required>
+	                <!-- Mensaje de retroalimentacion -->
                 	<div ng-messages="frmMeasurements.calvesRight.$error">
                   		<div ng-messages-include="components/includes/messages.html"></div>
                 	</div>
