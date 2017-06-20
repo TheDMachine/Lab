@@ -2,21 +2,17 @@
   angular
     .module('myApp')
     .controller('clientAccountCtrl', clientAccountCtrl);
-    function clientAccountCtrl(userService, $scope, appointmentService){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function clientAccountCtrl(userService, $scope, appointmentService, AuthService){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
       vm.userIn = {};
 
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
+        vm.userIn = userService.findUsers(userService.getCookie());
+        console.log(vm.userIn);
         vm.users = userService.getUsers();
-        vm.appointments = appointmentService.getAppointment();
-
-        for (var i = 0; i<vm.users.length; i++) {
-         if (vm.users[i].logIn == true) {
-          vm.userIn = vm.users[i];
-         } 
-       }
-      }init();
+        vm.appointments = appointmentService.getAppointment(); 
+       }init();
 
       vm.getInfo = function(puser){
           vm.userIn.phone = puser.phone;
@@ -44,9 +40,8 @@
           age : vm.userIn.age,
           emergContact : vm.userIn.emergContact,
           userType : vm.userIn.userType,
-          coachName : vm.userIn.coachName,
-          logIn : false,
-          status : 'active'
+          status : 'active',
+          coachName : vm.userIn.coach
         };
        
         userService.updateUser(modifyUser);
@@ -70,7 +65,7 @@
           clientName : vm.userIn.name,
           clientFirstName : vm.userIn.firstName,
           clientGender : vm.userIn.gender,
-          coachName : vm.userIn.coachName,
+          coachName : vm.userIn.coach,
           date : pDate,
           state : 'Revisión'
         };
@@ -95,11 +90,11 @@
         return clientAppointments;
       }
 
-      // vm.logOut = function(){
-      //   AuthService.logOut();
-      // }
-
+      vm.logOut = function(){
+        AuthService.logOut();
+      }
     }
+
      //se establece un objeto de angular normal
 
 })();

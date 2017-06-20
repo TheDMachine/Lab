@@ -1,7 +1,7 @@
 <section id="clientView" class="container-fluid">
   <div id="blackSpace" class="row">
     <div class="col-xs-offset-7 col-xs-5 col-sm-offset-10 col-sm-2">
-      <md-button ng-click="vm.ogOut()"> Cerrar Sesión </md-button>
+      <md-button ng-click="vm.logOut()"> Cerrar Sesión </md-button>
     </div>
   </div>
   <!-- Nombre de usuario -->
@@ -51,7 +51,7 @@
               <!-- Campo fotografía -->
               <md-input-container flex-offset>
                 <label>Fotografía</label>
-                <input name="image" ng-model="vm.userIn.image" type="text" required>
+                <input type="file" ng-model="user.image" name="photo" id="photo">
                 <!-- Mensaje de retroalimentacion -->
                 <div ng-messages="projectForm.clientEmail.$error" role="alert">
                   <div ng-messages="frmModInfo.image.$error">
@@ -84,7 +84,7 @@
                 </div>
               </md-input-container>
 
-              <button class="btn btn-primary buttonForm" type="submit" ng-click="vm.update(vm.userIn)" ng-disabled="frmModInfo.$invalid">Actualizar</button>
+              <button class="btn btn-primary buttonForm" type="submit" data-toggle="collapse" data-target="#ModInfo" ng-click="vm.update(vm.userIn)" ng-disabled="frmModInfo.$invalid">Actualizar</button>
             </form>
           </div>
         </div>
