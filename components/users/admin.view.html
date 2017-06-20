@@ -12,6 +12,7 @@
   <thead>
     <tr>
       <th>Cédula</th>
+      <th>Foto</th>
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Usuario</th>
@@ -22,6 +23,9 @@
   <tbody>
     <tr ng-repeat="item in user.users">
       <th scope="row">{{item.id}}</th>
+      <!--<td>
+        <img ng-src="{{item.image}}" width="50px" height="50px">
+      </td>-->
       <td>{{item.name}}</td>
       <td>{{item.firstName}}</td>
       <td>{{item.userName}}</td>
@@ -219,6 +223,9 @@
             <div ng-message="pattern">######### - Ingrese un número de teléfono válido.</div>
           </div>
         </md-input-container>
+
+        <label for="">Photo</label>
+        <input type="file" ng-model="user.image" name="photo" id="photo" >
 
 
         <md-input-container>

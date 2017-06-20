@@ -1,6 +1,6 @@
 (function(){
   angular
-    .module('myApp', ['ui.router','ngMessages','ngMaterial','ngCookies'])
+    .module('myApp', ['ui.router','ngMessages','ngMaterial','ngCookies', 'ngFileUpload'])
     .config(configuration);
     function configuration($stateProvider, $urlRouterProvider){ //stateProvider
       $stateProvider

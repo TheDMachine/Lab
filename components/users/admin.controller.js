@@ -2,12 +2,13 @@
   angular
     .module('myApp')
     .controller('adminAccountCtrl', adminAccountCtrl);
-    function adminAccountCtrl(userService, $scope, $cookies){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function adminAccountCtrl(userService, $scope, $cookies, ImageService, Upload){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
       $scope.view;
       $scope.updateDisable = true;
       $scope.submitDisable = false;
+      vm.cloudObj = ImageService.getConfiguration();
       /*$scope.showHints = true;*/
       vm.roles = ['Administrador', 'Instructor', 'Cliente'];
 
@@ -41,36 +42,43 @@
           emergContact : vm.emergContact,
           userType : vm.userType,
           logIn : false,
-          status : 'active'
+          status : 'active',
+          coach : vm.coach
         };
         vm.age = vm.date.getFullYear() - vm.myDate.getFullYear();
         newUser.age = vm.age;
+        vm.cloudObj.data.file = document.getElementById("photo").files[0];
+        Upload.upload(vm.cloudObj)
+          .success(function(data){
+            vm.image = data.url;
+            newUser.image = vm.image;
+          });
         if(vm.users.length == 0){
-          console.log(newUser);
           userService.setUsers(newUser);
           document.querySelector('.success').innerHTML = 'Usuario registrado correctamente!';
           console.log(vm.users);
-          /*clean();*/
+          clean();
           init();
           return;
-        }
-        for(var i = 0; i < vm.users.length; i++){
-          if(newUser.id == vm.users[i].id){
-            document.querySelector('.error').innerHTML = 'Este usuario ya existe, porfavor ingrese otro';
-            return;
-          }
-          else if(newUser.userName == vm.users[i].userName){
-            document.querySelector('.error').innerHTML = 'El nombre de usuario ya existe, porfavor ingrese otro';
-            return;
-          }
-          else{
-            console.log(newUser);
-            userService.setUsers(newUser);
-            document.querySelector('.success').innerHTML = 'Usuario registrado correctamente!';
-            console.log(vm.users);
-            /*clean();*/
-            init();
-            return;
+        }else{
+          for(var i = 0; i < vm.users.length; i++){
+            if(newUser.id == vm.users[i].id){
+              document.querySelector('.error').innerHTML = 'Este usuario ya existe, porfavor ingrese otro';
+              return;
+            }
+            else if(newUser.userName == vm.users[i].userName){
+              document.querySelector('.error').innerHTML = 'El nombre de usuario ya existe, porfavor ingrese otro';
+              return;
+            }
+            else{
+              console.log(newUser);
+              userService.setUsers(newUser);
+              document.querySelector('.success').innerHTML = 'Usuario registrado correctamente!';
+              console.log(vm.users);
+              /*clean();*/
+              init();
+              return;
+            }
           }
         }
       };
@@ -100,7 +108,8 @@
           vm.emergContact = puser.emergContact,
           vm.userType = puser.userType,
           vm.logIn = false,
-          vm.status = 'active'
+          vm.status = 'active',
+          vm.coach = puser.coach;
 
           $scope.view = 1;
           $scope.updateDisable = false;
@@ -125,7 +134,8 @@
           emergContact : vm.emergContact,
           userType : vm.userType,
           logIn : false,
-          status : 'active'
+          status : 'active',
+          coach : vm.coach
         }
         $scope.submitDisable = false;
         $scope.updateDisable = true;
@@ -170,6 +180,7 @@
         vm.age = '';
         vm.emergContact = '';
         vm.userType = '';
+        vm.coach = '';
       }
 
     }
