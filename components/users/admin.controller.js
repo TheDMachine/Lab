@@ -136,7 +136,6 @@
           age : vm.age,
           emergContact : vm.emergContact,
           userType : vm.userType,
-          logIn : false,
           status : 'active',
           coach : vm.coach
         }

@@ -1,12 +1,12 @@
 <div layout="column" ng-cloak ng-init="view = 1">
 
 <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-  <h1>Admin Platform</h1>
-  <p>Hola! {{user.currentUser.userName}}</p>
-  <md-button ng-click="view = 1" ng-style="view === 1 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Registros</md-button>
-  <md-button ng-click="view = 2" ng-style="view === 2 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Usuarios</md-button>
+  <h1 id="admin">Admin Platform</h1>
+  <p class="hi">Hola! {{user.currentUser.userName}}</p>
+  <md-button class="menu" ng-click="view = 1" ng-style="view === 1 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Registros</md-button>
+  <md-button class="menu" ng-click="view = 2" ng-style="view === 2 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Usuarios</md-button>
   <span flex></span>
-  <md-button id="logOut" class="layout-align-end-start" ng-click="user.logOut()">Cerrar sesión</md-button>
+  <md-button class="menu" id="logOut" class="layout-align-end-start" ng-click="user.logOut()">Cerrar sesión</md-button>
 </md-toolbar>
 
   <table id="tblDatos" ng-show="view == 2" class="table table-striped">

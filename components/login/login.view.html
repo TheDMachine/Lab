@@ -1,6 +1,6 @@
 <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
 	<div flex-xs flex-gt-xs="40" layout="column" layout-align="center center">
-		<md-card class="card-40-center">
+		<md-card class="card-40-center" id="login-card">
 	        <md-card-title>
 	            <md-card-title-text>
 	                <span class="md-headline">Log In</span>
@@ -22,7 +22,7 @@
 					</div>
 					<div layout="row" layout-align="center">
 						<p class="blocked"></p>
-						<md-button type="submit" ng-disabled="frmLogin.$invalid">Iniciar Sesión</md-button>
+						<md-button id="login-button" flex="100" type="submit" ng-disabled="frmLogin.$invalid">Iniciar Sesión</md-button>
 					</div>
 				</div>
 			</form>
