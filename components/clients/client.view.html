@@ -1,4 +1,9 @@
 <section id="clientView" class="container-fluid">
+  <div id="blackSpace" class="row">
+    <div class="col-xs-offset-7 col-xs-5 col-sm-offset-10 col-sm-2">
+      <md-button ng-click="vm.ogOut()"> Cerrar Sesión </md-button>
+    </div>
+  </div>
   <!-- Nombre de usuario -->
   <div id="NameImgSpace" class="row">
     <div class="col-xs-12 col-sm5 col-md-3 col-lg-3">
@@ -6,8 +11,8 @@
       <!-- <img class="col-xs-6 col-sm-4 col-md-3 col-lg-3 clientImage" ng-model="vm.userIn.image" alt="Description" width="200px" height="200px"/> -->
       <h3>¡Hola {{vm.userIn.name}} {{vm.userIn.firstName}}!</h3>
     </div>
-    <div class="col-xs-12 col-sm-offset-4 col-sm-2 col-md-offset-7 col-md-2 col-lg-offset-7 col-lg-2">
-      <md-button> Cerrar Sesión </md-button>
+    <div id="motivationMsj" class="col-sm-6 col-md-6 col-lg-offset-3 col-lg-5">
+      <p>¡Siempre firme hacia las metas, se puede lograr!</p>
     </div>
   </div>
   <!-- Formulario de datos a editar -->
@@ -109,10 +114,6 @@
         </div>
       </div>
     </div>
-
-    <div id="motivationMsj" class="col-sm-6 col-md-6 col-lg-6">
-      <p>¡Siempre firme hacia las metas, se puede lograr!</p>
-    </div>
   </div>
 
   <!-- Tabla de estado de citas -->
@@ -136,7 +137,7 @@
   
   <!-- Tabla para filtro de medidas-->
   <div id="filterMeas" class="row">
-    <p>Sus medidas al día de hoy son:</p>
+    <p>Historial de medidas:</p>
     <table class="col-xs-11">
       <thead>
         <tr>

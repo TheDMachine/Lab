@@ -95,6 +95,10 @@
         return clientAppointments;
       }
 
+      // vm.logOut = function(){
+      //   AuthService.logOut();
+      // }
+
     }
      //se establece un objeto de angular normal
 

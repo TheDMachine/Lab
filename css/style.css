@@ -43,10 +43,15 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
   background: #1E88E5;
 }
 /*Inicio de estilos del view del client*/
+#clientView #blackSpace{
+  background-color: #282827;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 #clientView{
-  background-image: url(../img/backgClient1.jpg);
+  background-image: url(../img/backg2.jpg);
   background-size: cover;
-  padding-bottom: 300px;
+  padding-bottom: 60px;
 }
 #clientView #NameImgSpace{
   margin-top: 60px;
@@ -55,22 +60,22 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 #clientView #NameImgSpace img{
   margin-left: 5%;
 }
-#clientView #NameImgSpace .md-button{
+#clientView #blackSpace .md-button{
   color: #fff;
   margin-left: 2%;
 }
-#clientView #NameImgSpace .md-button:hover{
-  background-color:  rgba(239, 192, 29, 0.4);
+/*#clientView #NameImgSpace .md-button:hover{
+  background-color:  #000;
   transition: 2s;
-}
+}*/
 #clientView #NameImgSpace div img{
   margin: 0 auto;
 }
-#clientView #NameImgSpace div .md-button{
+/*#clientView #NameImgSpace div .md-button{
   align-content: center;
-}
+}*/
 #clientView div h3{
-  color: #fff;
+  color: #464644;
   letter-spacing: 1px;
   margin-left: 2%;
   text-align: center;
@@ -86,8 +91,9 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
   color: #464644;
 }
 #clientView #forms-msj #forms button:hover{
-  background-color:  rgba(239, 192, 29, 0.4);
+  background-color:  #efc01d;
   transition: 2s;
+  color: #000;
 }
 #clientView #forms-msj #forms div label{
   font-size: 1.286em;
@@ -98,14 +104,15 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 #clientView #forms-msj #forms{
   margin-bottom: 30px;
 }
-#clientView #forms-msj #motivationMsj p{
+#clientView #NameImgSpace #motivationMsj p{
   font-size: 2.857em;
   text-align: center;
+  color: #464644;
 }
 #clientView .buttonCollapse{
-  background: #efc01d;
+  background: rgba(239, 192, 29, 0.4);
   border: none;
-  color: #000;
+  color: #fff;
   margin-top: 30px;
   outline: none;
 }
