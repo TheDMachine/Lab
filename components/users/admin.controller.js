@@ -2,13 +2,14 @@
   angular
     .module('myApp')
     .controller('adminAccountCtrl', adminAccountCtrl);
-    function adminAccountCtrl(userService, $scope, $cookies, ImageService, Upload){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function adminAccountCtrl(userService, $scope, $cookies, ImageService, Upload, AuthService){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
       $scope.view;
       $scope.updateDisable = true;
       $scope.submitDisable = false;
       vm.cloudObj = ImageService.getConfiguration();
+
       /*$scope.showHints = true;*/
       vm.roles = ['Administrador', 'Instructor', 'Cliente'];
 
@@ -18,6 +19,7 @@
         vm.client = false;
 
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
+        vm.currentUser = userService.findUsers(userService.getCookie());
         vm.users = userService.getUsers();
         console.log(vm.users);
       }init();
@@ -156,7 +158,7 @@
       }
 
       vm.logOut = function(){
-        $location.url('/login');
+        AuthService.logOut();
       }
 
       vm.seeValue = function(item){

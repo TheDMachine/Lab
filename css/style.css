@@ -105,3 +105,15 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input {
 md-input-container:not(.md-input-invalid).md-input-focused label {
     color: #484b53;
 }
+
+#form-login{
+  margin: 10% auto
+}
+
+#form-login label{
+  margin: 3.5% 0;
+}
+
+md-card{
+  margin: 27.5% 0;
+}

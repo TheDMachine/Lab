@@ -1,12 +1,31 @@
-<form ng-submit="vm.login()" novalidate name="frmLogin">
-<md-input-container layout="column">
-  <label>Usuario</label>
-  <input type="text" name="username" ng-model="vm.username" required/>
-</md-input-container>
-<md-input-container layout="column">
-  <label>Contraseña</label>
-  <input type="password" name="password" ng-model="vm.password" required/>
-</md-input-container>
-<p class="blocked"></p>
-<md-button type="submit" ng-disabled="frmLogin.$invalid">Iniciar Sesión</md-button>
-</form>
+<md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+	<div flex-xs flex-gt-xs="40" layout="column" layout-align="center center">
+		<md-card class="card-40-center">
+	        <md-card-title>
+	            <md-card-title-text>
+	                <span class="md-headline">Log In</span>
+	            </md-card-title-text>
+	    	</md-card-title>
+	    	<form ng-submit="vm.login()" novalidate name="frmLogin" id="form-login">
+				<div class="md-padding" layout-align="center">
+					<div layout="row">
+						<md-input-container layout="column" flex="100" flex-gt-sm>
+						  <label>Usuario</label>
+						  <input type="text" name="username" ng-model="vm.username" required/>
+						</md-input-container>
+					</div>
+					<div layout="row">
+						<md-input-container layout="column" flex="100" flex-gt-sm>
+						  <label>Contraseña</label>
+						  <input type="password" name="password" ng-model="vm.password" required/>
+						</md-input-container>
+					</div>
+					<div layout="row" layout-align="center">
+						<p class="blocked"></p>
+						<md-button type="submit" ng-disabled="frmLogin.$invalid">Iniciar Sesión</md-button>
+					</div>
+				</div>
+			</form>
+	    </md-card>            
+	</div>
+</md-content>

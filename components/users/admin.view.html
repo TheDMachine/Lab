@@ -2,6 +2,7 @@
 
 <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
   <h1>Admin Platform</h1>
+  <p>Hola! {{user.currentUser.userName}}</p>
   <md-button ng-click="view = 1" ng-style="view === 1 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Registros</md-button>
   <md-button ng-click="view = 2" ng-style="view === 2 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Usuarios</md-button>
   <span flex></span>
@@ -23,9 +24,9 @@
   <tbody>
     <tr ng-repeat="item in user.users">
       <th scope="row">{{item.id}}</th>
-      <!--<td>
+        <td>
         <img ng-src="{{item.image}}" width="50px" height="50px">
-      </td>-->
+      </td>
       <td>{{item.name}}</td>
       <td>{{item.firstName}}</td>
       <td>{{item.userName}}</td>
