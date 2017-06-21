@@ -7,9 +7,69 @@
   	<!-- Nombre del coach -->
   	<div id="NameImgSpace" class="row">
 	    <div class="col-xs-12 col-sm5 col-md-3 col-lg-3">
-	      <img src="img/1.jpg" alt="" class="img-responsive" width="200px" height="200px">
-	      <!-- <img class="col-xs-6 col-sm-4 col-md-3 col-lg-3 clientImage" ng-model="" alt="Description" width="200px" height="200px"/> -->
-	      <h3>¡Hola {{vm.userIn.name}} {{vm.userIn.firstName}}!</h3>
+    		<figure class="client-container-image">
+        		<img class="col-xs-6 col-sm-4 col-md-3 col-lg-3 clientImage" ng-src="{{coach.userIn.image}}" alt="Description"/>
+      		</figure>
+	      <h3>¡Hola {{coach.userIn.name}} {{coach.userIn.firstName}}!</h3>
+                  <button class="btn btn-primary btn-lg buttonCollapse" type="button"  data-toggle="collapse" data-target="#ModInfo" aria-expanded="false" aria-controls="ModInfo" ng-click="vm.getInfo(vm.userIn)">Editar Perfil</button>
+        <div class="collapse" id="ModInfo">
+          <div class="well">
+            <form name="frmModInfo" autocomplete="off">
+
+              <!-- Campo Usuario -->
+              <md-input-container flex-offset>
+                <label>Usuario</label>
+                <input name="userName" ng-model="coach.userIn.userName" type="text" required>
+                <!-- Mensaje de retroalimentacion -->
+                <div ng-messages="frmModInfo.userName.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div>
+              </md-input-container>
+
+              <!-- Campo contraseña -->
+              <md-input-container flex-offset>
+                <label>Contraseña</label>
+                <input name="password" ng-model="coach.userIn.password" type="password" required>
+                <!-- Mensaje de retroalimentacion -->
+                <div ng-messages="frmModInfo.password.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div>
+              </md-input-container>
+
+              <!-- Campo fotografía -->
+              <md-input-container flex-offset>
+                <label>Fotografía</label>
+                <input type="file" ng-model="coach.image" name="photo" id="photo">
+                <!-- Mensaje de retroalimentacion -->
+                <div ng-messages="frmModInfo.image.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div>
+              </md-input-container>
+
+              <!-- Campo teléfono -->
+              <md-input-container flex-offset>
+                <label>Teléfono</label>
+                <input name="phone" ng-model="coach.userIn.phone" type="text" required>
+                <!-- Mensaje de retroalimentacion -->
+                <div ng-messages="frmModInfo.phone.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div>
+              </md-input-container>
+
+              <!-- Campo Contacto de emergencia -->
+              <md-input-container flex-offset>
+                <label>Contacto de emergencia</label>
+                <input name="emergContact" ng-model="coach.userIn.emergContact" type="text" required>
+                <!-- Mensaje de retroalimentacion -->
+                <div ng-messages="frmModInfo.emergContact.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div>
+              </md-input-container>
+
+              <button class="btn btn-primary buttonForm" type="submit" data-toggle="collapse" data-target="#ModInfo" ng-click="coach.update(coach.userIn)" ng-disabled="frmModInfo.$invalid">Actualizar</button>
+            </form>
+          </div>
+        </div>
 	    </div>
 	    <div id="motivationMsj" class="col-sm-6 col-md-6 col-lg-offset-3 col-lg-5">
 	      <p>¡Lucho por mejorar la salud de los demás!</p>

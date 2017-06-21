@@ -97,6 +97,34 @@
         init();
       }
 
+      vm.update = function(pUpdateUser){
+        var modifyUser = {
+          id : vm.userIn.id,
+          name : vm.userIn.name,
+          secondName : vm.userIn.secondName,
+          firstName : vm.userIn.firstName,
+          lastName : vm.userIn.lastName,
+          nationality : vm.userIn.nationality,
+          idType : vm.userIn.idType,
+          myDate : vm.userIn.myDate,
+          gender : vm.userIn.gender,
+          phone : vm.userIn.phone,
+          userName : vm.userIn.userName,
+          password : vm.userIn.password,
+          image : vm.userIn.image,
+          age : vm.userIn.age,
+          emergContact : vm.userIn.emergContact,
+          userType : vm.userIn.userType,
+          status : 'active',
+          coachName : vm.userIn.coach
+        };
+        console.log(modifyUser);
+        userService.updateUser(modifyUser);
+        console.log(vm.users);
+        clean();
+        init();
+      }
+
       function seeImc(imc) {
         var msj = sizeService.qualification(imc);
         vm.clienteImc = msj;
