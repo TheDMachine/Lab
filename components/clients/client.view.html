@@ -7,7 +7,6 @@
   <!-- Nombre de usuario -->
   <div id="NameImgSpace" class="row">
     <div class="col-xs-12 col-sm5 col-md-3 col-lg-3">
-      <!--<img src="img/1.jpg" alt="" class="img-responsive" width="200px" height="200px">-->
       <figure class="client-container-image">
         <img class="col-xs-6 col-sm-4 col-md-3 col-lg-3 clientImage" ng-src="{{vm.userIn.image}}" alt="Description"/>
       </figure>
@@ -98,26 +97,28 @@
         </div>
       </div>
     </div>
+    
+    <!-- Tabla de estado de citas -->
+    <div id="notifications" class="col-sm-6 col-md-6 col-lg-6">
+      <p><span class="fa fa-bell"></span> Notificación de las citas solicitadas: </p>
+      <table class="col-xs-11">
+        <thead>
+          <tr>
+            <th>FECHA</th>
+            <th>ESTADO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="appointment in vm.appointmentsStatus">
+            <td>{{appointment.date}}</td>
+            <td>{{appointment.state}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <!-- Tabla de estado de citas -->
-  <div id="notifications" class="row">
-    <p><span class="fa fa-bell"></span> Notificación de las citas solicitadas: </p>
-    <table class="col-xs-11">
-      <thead>
-        <tr>
-          <th>FECHA</th>
-          <th>ESTADO</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="appointment in vm.appointmentsStatus">
-          <td>{{appointment.date}}</td>
-          <td>{{appointment.state}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  
   
   <!-- Tabla para filtro de medidas-->
   <div id="filterMeas" class="row">

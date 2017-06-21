@@ -7,6 +7,7 @@
       var vm = this; //binding del controlador con el html, solo en el controlador
       vm.reviewAppoint = [];
       vm.date = new Date();
+    
       
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.userIn = userService.findUsers(userService.getCookie());
@@ -14,7 +15,8 @@
         vm.users = userService.getUsers();
         vm.appointments = appointmentService.getAppointment();
         vm.size = sizeService.getSize();
-        inReviewAppointment();
+        vm.revApp = appointmentService.getRevApp();
+        vm.acceptApp = appointmentService.getAcceptApp();
       }init();
 
       vm.save = function(){
@@ -162,45 +164,43 @@
       }
 
     
-      function inReviewAppointment(){
+      vm.inReviewAppointment= function(){
         var appointments = appointmentService.getAppointment();
-        var coachAppoint = [];
+        var reviewAppoint = [];
         for (var i = 0; i < appointments.length; i++) {
-        if (appointments[i].coachName == vm.userIn.name) {
-          coachAppoint.push(appointmList);
+          if (appointments[i].state == 'Revisión' && appointments[i].coachName == vm.userIn.name) {
+            reviewAppoint.push(appointments);
           }
         }
-        for (var i = 0; i < coachAppoint.length; i++) {
-          if (coachAppoint[i].state == 'Revisión') {
-            vm.reviewAppoint.push(coachAppoint);
-          }
-        }
-        console.log(vm.reviewAppoint);
+
+        appointmentService.setReviewAppointments(reviewAppoint);
         init();
       }
 
-      vm.acceptedAppointment= function(){
+      function acceptedAppointment(){
         var appointments = appointmentService.getAppointment();
         var acceptedAppoint = [];
         for (var i = 0; i < appointments.length; i++) {
-          if (appointments[i].state == 'Aceptado') {
+          if (appointments[i].state == 'Aceptado' && appointments[i].coachName == vm.userIn.name) {
             acceptedAppoint.push(appointments);
           }
         }
-        return acceptedAppoint;
+        appointmentService.setAcceptAppointments(acceptedAppoint);
+        init();
       }
 
       vm.changeStateAccepted= function(pAppointment){
         pAppointment.state = 'Aceptado';
 
-        appointmentService.updateAppointment(pAppointment);
+        appointmentService.updateAppointment(pAppointment.state);
+        acceptedAppointment();
         init();
       }
       
       vm.changeStateDenied= function(pAppointment){
         pAppointment.state = 'Denegada';
 
-        appointmentService.updateAppointment(pAppointment);
+        appointmentService.updateAppointment(pAppointment.state);
       }
        vm.doMeasurements= function(pAppointment){
         vm.clientName = pAppointment.clientName;

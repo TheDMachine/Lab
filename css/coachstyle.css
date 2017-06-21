@@ -1,10 +1,10 @@
 .dateRequested{
-  height: 58em;
-  background: #007d75;
+
+ 
 }
 .dateAproved{
-  height: 58em;
-  background: #529a86;
+
+  
 }
 .dateRequested h3, .dateAproved h3{
   text-align: center;

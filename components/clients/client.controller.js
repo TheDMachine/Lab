@@ -73,8 +73,6 @@
         }else{
           document.querySelector('.SuccessMessage').innerHTML = 'La solicitud ha sido enviada exitosamente';
         };
-
-        
       }
 
       vm.appointmentsStatus= function(){

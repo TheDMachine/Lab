@@ -208,6 +208,7 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   margin-bottom: 30px;
 }
 #clientView #NameImgSpace #motivationMsj p{
+  padding-top: 80px;
   font-size: 2.857em;
   text-align: center;
   color: #464644;
@@ -223,13 +224,13 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
 #clientView div p{
   
 }
-#clientView #notifications{
-  margin-top: 100px;
+#clientView #forms-msj #notifications{
+  
 }
-#clientView #notifications p span{
+#clientView #forms-msj #notifications p span{
   color: #f11616;
 }
-#clientView #notifications p{
+#clientView #forms-msj #notifications p{
   font-size: 1.286em;
   margin-left: 2%;
   margin-bottom: 20px;
@@ -239,11 +240,11 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   border: none; 
   margin-left: 2%;
 }
-#clientView #notifications table, #clientView #filterMeas table{
+#clientView #forms-msj #notifications table, #clientView #filterMeas table{
   margin-left: 2%;
   margin-bottom: 60px;
 }
-#clientView #notifications table thead tr th, #clientView #filterMeas table thead tr th{
+#clientView #forms-msj #notifications table thead tr th, #clientView #filterMeas table thead tr th{
   color: #464644;
   padding-bottom: 20px;
   border-bottom: 1px solid #464644;
@@ -286,7 +287,4 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
 }
 /*Fin de estilos del view del client*/
 
-/*Inicio de estilos de coach*/
 
-
-/*Fin de estilos de coach*/

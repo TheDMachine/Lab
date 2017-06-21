@@ -77,49 +77,55 @@
   	</div>
  	<!-- Tablas de citas solicitadas y aceptadas-->
 	<div id="" class="row">
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-			<div class="dateRequested col-xs-12 col-sm-6 col-md-12 col-lg-12">
-				<!-- Tablas de citas solicitadas-->
-				<h3 class="col-xs-12">Solicitadas</h3>
-	      		<table class="col-xs-12">
-		        	<thead>
-			          <tr>
-			            <th>Cliente</th>
-             			<th>Fecha</th>
-			          </tr>
-		        	</thead>
-		        	<tbody>
-			          <tr ng-repeat="appointment in coach.reviewAppoint">
-			              <td>{{appointment.clientName}} {{appointment.clientFirstName}}</td>
-			              <td>{{appointment.date}}</td>
-			              <td><input type="submit" value="aceptar" ng-click="coach.changeStateAccepted(appointment)"></td>
-			              <td><input type="submit" value="rechazar" ng-click="coach.changeStateDenied(appointment)"></td>
-			          </tr>
-		        	</tbody>
-		      	</table>
-    		</div>
-	    	<div class="dateAproved col-xs-12 col-sm-6 col-md-12 col-lg-12">
-	    		<!-- Tablas de citas solicitadas y aceptadas-->
-	    		<h3 class="col-xs-12">Aceptadas</h3>
-		      	<table class="col-xs-12">
-			        <thead>
-			          <tr>
-			            <th>Cliente</th>
-              			<th>Fecha</th>
-			          </tr>
-			        </thead>
-			        <tbody>
-			          <tr ng-repeat="appointment in coach.acceptedAppointment">
-			              <td>{{appointment.clientName, appointment.clientFirstName}}</td>
-			              <td>{{appointment.date}}</td>
-			              <td><input type="submit" value="Hacer mediciones" ng-click="coach.doMeasurements(appointment)"></td>
-			          </tr>
-			        </tbody>
-		      	</table>
-	    	</div>
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <button class="btn btn-primary buttonCollapse" type="button"  data-toggle="collapse" data-target="#appointInfo" aria-expanded="false" aria-controls="appointInfo" ng-click="coach.inReviewAppointment()">Agenda de Citas</button>
+      <div class="collapse" id="appointInfo">
+        <div class="well">
+          <div class="dateRequested col-xs-12 col-sm-6 col-md-12 col-lg-12">
+           <!-- Tablas de citas solicitadas-->
+           <h3 class="col-xs-12">Solicitadas</h3>
+            <table class="col-xs-12">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="app in coach.revApp">
+                  <td>{{app.clientName}} {{app.clientFirstName}}</td>
+                  <td>{{app.date}}</td>
+                  <td><input type="submit" value="aceptar" ng-click="coach.changeStateAccepted(app)"></td>
+                  <td><input type="submit" value="rechazar" ng-click="coach.changeStateDenied(app)"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="dateAproved col-xs-12 col-sm-6 col-md-12 col-lg-12">
+            <!-- Tablas de citas solicitadas y aceptadas-->
+            <h3 class="col-xs-12">Aceptadas</h3>
+            <table class="col-xs-12">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                    <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="app in coach.acceptApp">
+                    <td>{{app.clientName, app.clientFirstName}}</td>
+                    <td>{{app.date}}</td>
+                    <td><input type="submit" value="Hacer mediciones" ng-click="coach.doMeasurements(app)"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>   
+      </div>
 		</div>
+  </div>
 		<!-- Formulario para medidas del cliente-->
-		<div class="contClient col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		<div class="contClient col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			<p><span>{{coach.clientName}}</span> {{coach.clientFirstName}}</p>
 			<form name="frmMeasurements" autocomplete="off">
 				<md-input-container flex-offset>
