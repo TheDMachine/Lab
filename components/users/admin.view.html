@@ -1,8 +1,8 @@
 <div layout="column" ng-cloak ng-init="view = 1">
 
 <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-  <h1 id="admin">Admin Platform</h1>
-  <p class="hi">Hola! {{user.currentUser.userName}}</p>
+  <h1 id="admin">Admin Platform - </h1>
+  <p class="hi">{{user.currentUser.userName}}</p>
   <md-button class="menu" ng-click="view = 1" ng-style="view === 1 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Registros</md-button>
   <md-button class="menu" ng-click="view = 2" ng-style="view === 2 ? { 'background':'rgba(255,255,255,0.2)'} : { 'background':'transparent' }">Usuarios</md-button>
   <span flex></span>
@@ -193,7 +193,7 @@
 
         <md-input-container>
           <label class="md-primary">Contraseña</label>
-          <input name="password" required ng-model="user.password" ng-pattern="/^[a-zA-Z0-9]*$/" />
+          <input name="password" type="password" required ng-model="user.password" ng-pattern="/^[a-zA-Z0-9]*$/" />
 
           <div class="hint" ng-if="showHints">xyz08 OR abcd78</div>
 

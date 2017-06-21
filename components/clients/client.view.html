@@ -7,8 +7,10 @@
   <!-- Nombre de usuario -->
   <div id="NameImgSpace" class="row">
     <div class="col-xs-12 col-sm5 col-md-3 col-lg-3">
-      <img src="img/1.jpg" alt="" class="img-responsive" width="200px" height="200px">
-      <!-- <img class="col-xs-6 col-sm-4 col-md-3 col-lg-3 clientImage" ng-model="vm.userIn.image" alt="Description" width="200px" height="200px"/> -->
+      <!--<img src="img/1.jpg" alt="" class="img-responsive" width="200px" height="200px">-->
+      <figure class="client-container-image">
+        <img class="col-xs-6 col-sm-4 col-md-3 col-lg-3 clientImage" ng-src="{{vm.userIn.image}}" alt="Description"/>
+      </figure>
       <h3>¡Hola {{vm.userIn.name}} {{vm.userIn.firstName}}!</h3>
     </div>
     <div id="motivationMsj" class="col-sm-6 col-md-6 col-lg-offset-3 col-lg-5">

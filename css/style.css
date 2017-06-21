@@ -8,7 +8,7 @@ body{
 }
 
 .hi{
-  margin: 0 1%;
+  margin: 0 2.5% 0 0;
   font-weight: 600;
   color: #fff;
   text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
@@ -271,10 +271,19 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   margin-left: 2%;
   margin-bottom: 20px;
 }
+
 #ErrorMessage, #SuccessMessage{
   color: #464644;
 }
 
+
+.client-container-image{
+  width: 27.5%;
+}
+
+.client-container-image img{
+  width: 100%;
+}
 /*Fin de estilos del view del client*/
 
 /*Inicio de estilos de coach*/
