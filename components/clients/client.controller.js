@@ -53,7 +53,7 @@
           vm.userIn='';
       }
 
-      vm.setAppointment = function(pDate){
+      vm.setAppointmentClient = function(pDate){
         var bError =  false;
 
         var appointmentInfo = {
@@ -67,6 +67,7 @@
         };
 
         bError = appointmentService.setAppointment(appointmentInfo);
+        console.log(vm.appointments);
 
         if (bError === true) {
           document.querySelector('.ErrorMessage').innerHTML = 'Fecha no disponible';

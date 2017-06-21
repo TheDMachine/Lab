@@ -7,6 +7,7 @@
       var vm = this; //binding del controlador con el html, solo en el controlador
       vm.reviewAppoint = [];
       vm.date = new Date();
+      vm.coachAppoint = [];
       
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.userIn = userService.findUsers(userService.getCookie());
@@ -164,16 +165,11 @@
 
     
       function inReviewAppointment(){
-        var appointments = appointmentService.getAppointment();
-        var coachAppoint = [];
-        for (var i = 0; i < appointments.length; i++) {
-        if (appointments[i].coachName == vm.userIn.name) {
-          coachAppoint.push(appointmList);
-          }
-        }
-        for (var i = 0; i < coachAppoint.length; i++) {
-          if (coachAppoint[i].state == 'Revisión') {
-            vm.reviewAppoint.push(coachAppoint);
+
+        for (var i = 0; i < vm.appointments.length; i++) {
+        if (vm.appointments[i].coachName == vm.userIn.name) {
+          if(vm.appointments[i].state == 'Revisión')
+          vm.reviewAppoint.push(vm.appointments[i]);
           }
         }
         console.log(vm.reviewAppoint);
