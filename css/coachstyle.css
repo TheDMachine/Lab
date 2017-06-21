@@ -9,3 +9,11 @@
 .dateRequested h3, .dateAproved h3{
   text-align: center;
 }
+
+.client-container-image{
+  width: 27.5%;
+}
+
+.client-container-image img{
+  width: 100%;
+}
