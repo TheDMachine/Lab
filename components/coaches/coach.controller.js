@@ -5,8 +5,9 @@
     function coachAccountCtrl(userService, appointmentService, $scope, sizeService, AuthService, $cookies, ImageService, Upload){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
-      
+      vm.reviewAppoint = [];
       vm.date = new Date();
+
       
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.userIn = userService.findUsers(userService.getCookie());
@@ -164,7 +165,6 @@
       vm.inReviewAppointment= function(){
         var appointments = appointmentService.getAppointment();
         var coachAppoint = [];
-        var reviewAppoint = [];
         for (var i = 0; i < appointments.length; i++) {
         if (appointments[i].coachName == vm.userIn.name) {
           coachAppoint.push(appointmList);
@@ -177,7 +177,6 @@
         }
         return reviewAppoint;
         console.log(reviewAppoint);
-        init();
       }
 
       vm.acceptedAppointment= function(){
@@ -189,21 +188,18 @@
           }
         }
         return acceptedAppoint;
-        init();
       }
 
       vm.changeStateAccepted= function(pAppointment){
         pAppointment.state = 'Aceptado';
 
         appointmentService.updateAppointment(pAppointment);
-        init();
       }
       
       vm.changeStateDenied= function(pAppointment){
         pAppointment.state = 'Denegada';
 
         appointmentService.updateAppointment(pAppointment);
-        init();
       }
        vm.doMeasurements= function(pAppointment){
         vm.clientName = pAppointment.clientName;

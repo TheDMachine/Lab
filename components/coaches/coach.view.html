@@ -90,7 +90,7 @@
 		        	</thead>
 		        	<tbody>
 			          <tr ng-repeat="appointment in coach.reviewAppoint">
-			              <td>{{appointment.clientName, appointment.clientFirstName}}</td>
+			              <td>{{appointment.clientName}}  {{appointment.clientFirstName}}</td>
 			              <td>{{appointment.date}}</td>
 			              <td><input type="submit" value="aceptar" ng-click="coach.changeStateAccepted(appointment)"></td>
 			              <td><input type="submit" value="rechazar" ng-click="coach.changeStateDenied(appointment)"></td>
