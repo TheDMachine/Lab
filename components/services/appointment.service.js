@@ -9,11 +9,7 @@
       setAppointment : _setAppointment,
       getAppointment : _getAppointment,
       updateAppointment : _updateAppointment,
-      setAppointment: _setAppointment,
-      setReviewAppointments: _setReviewAppointments,
-      getRevApp:_getRevApp,
-      setAcceptAppointments: _setAcceptAppointments,
-      getAcceptApp: _getAcceptApp
+      setAppointment: _setAppointment
 
     };
     return publicAPI; // todas las funciones que sean llamadas por ajax deben estar debajo del return, para que cuando angular corra el script haga el return y devuelva el api , las funciones debajo del return son privadas y se devuelve el api que es el que contiene las funciones
@@ -52,31 +48,6 @@
       }
       localStorage.setItem('lsAppointmentsList', JSON.stringify(appointmList));
     }
-    function _setReviewAppointments(pRevApp){
-      var revAppoint = pRevApp;
-
-      localStorage.setItem('lsRevAppointList', JSON.stringify(revAppoint));
-    }
-    function _getRevApp(){
-      var appointmList = JSON.parse(localStorage.getItem('lsRevAppointList'));
-      if(appointmList == null){
-        appointmList = appointments;
-      }
-      return appointmList;
-    }
-    function _setAcceptAppointments(pAcceptApp){
-      var acceptAppoint = pAcceptApp;
-
-      localStorage.setItem('lsAcceptAppList', JSON.stringify(acceptAppoint));
-    }
-    function _getAcceptApp(){
-      var appointmList = JSON.parse(localStorage.getItem('lsAcceptAppList'));
-      if(appointmList == null){
-        appointmList = appointments;
-      }
-      return appointmList;
-    }
-
 
   }
 
