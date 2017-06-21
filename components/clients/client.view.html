@@ -26,8 +26,8 @@
 
               <!-- Campo Usuario -->
               <md-input-container flex-offset>
-                <label>Usuario</label>
-                <input name="userName" ng-model="vm.userIn.userName" type="text" required>
+                <label>Nombre de usuario</label>
+                <input name="userName" ng-model="vm.userIn.userName" ng-pattern="/^[a-z0-9_-]{3,15}$/" required>
                 <!-- Mensaje de retroalimentacion -->
                 <div ng-messages="frmModInfo.userName.$error">
                   <div ng-messages-include="components/includes/messages.html"></div>
@@ -37,27 +37,21 @@
               <!-- Campo contraseña -->
               <md-input-container flex-offset>
                 <label>Contraseña</label>
-                <input name="password" ng-model="vm.userIn.password" type="password" required>
+                <input name="password" ng-model="vm.userIn.password" ng-pattern="/^[a-zA-Z0-9]*$/" type="password" required>
                 <!-- Mensaje de retroalimentacion -->
                 <div ng-messages="frmModInfo.password.$error">
                   <div ng-messages-include="components/includes/messages.html"></div>
                 </div>
               </md-input-container>
-
+              
               <!-- Campo fotografía -->
-              <md-input-container flex-offset>
-                <label>Fotografía</label>
+              <label>Fotografía</label>
                 <input type="file" ng-model="user.image" name="photo" id="photo">
-                <!-- Mensaje de retroalimentacion -->
-                <div ng-messages="frmModInfo.image.$error">
-                  <div ng-messages-include="components/includes/messages.html"></div>
-                </div>
-              </md-input-container>
 
               <!-- Campo teléfono -->
               <md-input-container flex-offset>
                 <label>Teléfono</label>
-                <input name="phone" ng-model="vm.userIn.phone" type="text" required>
+                <input name="phone" ng-model="vm.userIn.phone" ng-pattern="/^[0-9]{8}$/" required>
                 <!-- Mensaje de retroalimentacion -->
                 <div ng-messages="frmModInfo.phone.$error">
                   <div ng-messages-include="components/includes/messages.html"></div>
@@ -85,7 +79,7 @@
         <button class="btn btn-primary btn-lg buttonCollapse" type="button"  data-toggle="collapse" data-target="#clientMeasurement" aria-expanded="false" aria-controls="clientMeasurement">Solicitar cita de medición</button>
         <div class="collapse" id="clientMeasurement">
           <div class="well">
-            <p id="coachAsigne">Su instructor asignado es {{vm.userIn.coachName}}</p>
+            <p id="coachAsigne">Su instructor asignado es {{vm.userIn.coach}}</p>
             <form name="frmClientM" class="form-inline ">
               <md-input-container flex-offset>
                 <md-datepicker ng-model="vm.date"  md-placeholder="Fecha de cita" required></md-datepicker>
@@ -94,10 +88,10 @@
                    <div ng-messages-include="components/includes/messages.html"></div>
                  </div>
               </md-input-container>
-              <output id="ErrorMessage"></output>
-              <output id="SuccessMessage"></output>
-              <button class="btn btn-primary buttonForm" type="submit" ng-click="vm.setAppointment(date)" data-toggle="collapse" data-target="#clientMeasurement" ng-disabled="frmClientM.$invalid">Enviar</button>
+              <button class="btn btn-primary buttonForm" type="submit" ng-click="vm.setAppointment(vm.date)"  ng-disabled="frmClientM.$invalid">Enviar</button>
             </form>
+            <p class="ErrorMessage"></p>
+            <p class="SuccessMessage"></p>
           </div>
         </div>
       </div>

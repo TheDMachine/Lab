@@ -2,10 +2,10 @@
   angular
     .module('myApp')
     .controller('coachAccountCtrl', coachAccountCtrl);
-    function coachAccountCtrl(userService, appointmentService, $scope, sizeService, AuthService){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function coachAccountCtrl(userService, appointmentService, $scope, sizeService, AuthService, $cookies, ImageService, Upload){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
-
+      
       vm.date = new Date();
       
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
@@ -135,13 +135,20 @@
     
       vm.inReviewAppointment= function(){
         var appointments = appointmentService.getAppointment();
+        var coachAppoint = [];
         var reviewAppoint = [];
         for (var i = 0; i < appointments.length; i++) {
-          if (appointments[i].state == 'Revisión') {
-            reviewAppoint.push(appointments);
+        if (appointments[i].coachName == vm.userIn.name) {
+          coachAppoint.push(appointmList);
+          }
+        }
+        for (var i = 0; i < coachAppoint.length; i++) {
+          if (coachAppoint[i].state == 'Revisión') {
+            reviewAppoint.push(coachAppoint);
           }
         }
         return reviewAppoint;
+        console.log(reviewAppoint);
         init();
       }
 

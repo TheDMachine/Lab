@@ -2,7 +2,7 @@
   angular
     .module('myApp')
     .controller('clientAccountCtrl', clientAccountCtrl);
-    function clientAccountCtrl(userService, $scope, appointmentService, AuthService){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function clientAccountCtrl(userService, $scope, appointmentService, AuthService, $cookies, ImageService, Upload){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
       vm.userIn = {};
@@ -55,10 +55,6 @@
 
       vm.setAppointment = function(pDate){
         var bError =  false;
-        var errorMsj = '';
-        var successMsj = '';
-        errorMsj = getElementById('#ErrorMessage');
-        successMsj = getElementById('#SuccessMessage');
 
         var appointmentInfo = {
           clientId : vm.userIn.id,
@@ -70,13 +66,15 @@
           state : 'Revisión'
         };
 
+        bError = appointmentService.setAppointment(appointmentInfo);
+
         if (bError === true) {
-          errorMsj.value = 'Fecha no disponible';
+          document.querySelector('.ErrorMessage').innerHTML = 'Fecha no disponible';
         }else{
-          successMsj.value = 'La solicitud ha sido enviada exitosamente';
+          document.querySelector('.SuccessMessage').innerHTML = 'La solicitud ha sido enviada exitosamente';
         };
 
-        appointmentService.setAppointment(appointmentInfo);
+        
       }
 
       vm.appointmentsStatus= function(){
