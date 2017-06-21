@@ -7,6 +7,7 @@
       var vm = this; //binding del controlador con el html, solo en el controlador
       
       vm.date = new Date();
+      vm.reviewAppoint = [];
       
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.userIn = userService.findUsers(userService.getCookie());
@@ -14,6 +15,7 @@
         vm.users = userService.getUsers();
         vm.appointments = appointmentService.getAppointment();
         vm.size = sizeService.getSize();
+        inReviewAppointment();
       }init();
 
       vm.save = function(){
@@ -161,10 +163,9 @@
       }
 
     
-      vm.inReviewAppointment= function(){
+      function inReviewAppointment(){
         var appointments = appointmentService.getAppointment();
         var coachAppoint = [];
-        var reviewAppoint = [];
         for (var i = 0; i < appointments.length; i++) {
         if (appointments[i].coachName == vm.userIn.name) {
           coachAppoint.push(appointmList);
@@ -172,12 +173,10 @@
         }
         for (var i = 0; i < coachAppoint.length; i++) {
           if (coachAppoint[i].state == 'Revisión') {
-            reviewAppoint.push(coachAppoint);
+            vm.reviewAppoint.push(coachAppoint);
           }
         }
-        return reviewAppoint;
-        console.log(reviewAppoint);
-        init();
+        console.log(vm.reviewAppoint);
       }
 
       vm.acceptedAppointment= function(){
