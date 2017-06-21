@@ -2,7 +2,7 @@
   angular
     .module('myApp')
     .controller('coachAccountCtrl', coachAccountCtrl);
-    function coachAccountCtrl(userService, appointmentService, $scope, sizeService, AuthService){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function coachAccountCtrl(userService, appointmentService, $scope, sizeService, AuthService, $cookies){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
 
