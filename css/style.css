@@ -143,6 +143,11 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+#landingView #yellowSpace{
+  background-color: #ffce3e;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 #clientView{
   background-image: url(../img/backg2.jpg);
   background-size: cover;
@@ -157,6 +162,10 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
 }
 #clientView #blackSpace .md-button{
   color: #fff;
+  margin-left: 2%;
+}
+#clientView #yellowSpace div #logInButton{
+  color: #282827;
   margin-left: 2%;
 }
 /*#clientView #NameImgSpace .md-button:hover{
@@ -177,8 +186,7 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
 }
 
 #clientView #forms-msj #ModInfo .well, #clientView #forms-msj #clientMeasurement .well{
-  background-color: rgba(255, 255, 255, 0.9);
-  border-color: transparent;
+  
 }
 #clientView #forms-msj #forms .buttonForm{
   background-color: transparent;
@@ -205,14 +213,15 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   color: #464644;
 }
 #clientView .buttonCollapse{
-  background: rgba(239, 192, 29, 0.4);
+  background-color:  #efc01d;
+ /* background: rgba(239, 192, 29, 0.4);*/
   border: none;
-  color: #fff;
+  color: #000;
   margin-top: 30px;
   outline: none;
 }
 #clientView div p{
-  color: #fff;
+  
 }
 #clientView #notifications{
   margin-top: 100px;
@@ -235,13 +244,13 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   margin-bottom: 60px;
 }
 #clientView #notifications table thead tr th, #clientView #filterMeas table thead tr th{
-  color: #fff;
+  color: #464644;
   padding-bottom: 20px;
-  border-bottom: 1px solid #d1cece;
+  border-bottom: 1px solid #464644;
 }
 #clientView #notifications table tbody tr td, #clientView #filterMeas table tbody tr td{
-  color: #fff;
-  border-bottom: 1px solid #d1cece;
+  color: #464644;
+  border-bottom: 1px solid #464644;
 }
 /*Insertar estilos diferentes en media queries*/
 @media only screen and (max-width:992px){
@@ -258,12 +267,16 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   margin-bottom: 100px;
   }
 }
-
 #clientView #filterMeas p{
   font-size: 1.286em;
   margin-left: 2%;
   margin-bottom: 20px;
 }
+
+#ErrorMessage, #SuccessMessage{
+  color: #464644;
+}
+
 
 .client-container-image{
   width: 27.5%;
@@ -273,3 +286,8 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   width: 100%;
 }
 /*Fin de estilos del view del client*/
+
+/*Inicio de estilos de coach*/
+
+
+/*Fin de estilos de coach*/
