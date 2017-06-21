@@ -7,9 +7,9 @@
   	<!-- Nombre del coach -->
   	<div id="NameImgSpace" class="row">
 	    <div class="col-xs-12 col-sm5 col-md-3 col-lg-3">
-    		<figure class="client-container-image">
+    		<!--<figure class="client-container-image">
         		<img class="col-xs-6 col-sm-4 col-md-3 col-lg-3 clientImage" ng-src="{{coach.userIn.image}}" alt="Description"/>
-      		</figure>
+      		</figure>-->
 	      <h3>¡Hola {{coach.userIn.name}} {{coach.userIn.firstName}}!</h3>
                   <button class="btn btn-primary btn-lg buttonCollapse" type="button"  data-toggle="collapse" data-target="#ModInfo" aria-expanded="false" aria-controls="ModInfo" ng-click="vm.getInfo(vm.userIn)">Editar Perfil</button>
         <div class="collapse" id="ModInfo">
@@ -109,8 +109,8 @@
 			          </tr>
 			        </thead>
 			        <tbody>
-			          <tr ng-repeat="appointment in coach.acceptedAppointment">
-			              <td>{{appointment.clientName, appointment.clientFirstName}}</td>
+			          <tr ng-repeat="appointment in coach.acceptedAppoint">
+			              <td>{{appointment.clientName}}</td>
 			              <td>{{appointment.date}}</td>
 			              <td><input type="submit" value="Hacer mediciones" ng-click="coach.doMeasurements(appointment)"></td>
 			          </tr>

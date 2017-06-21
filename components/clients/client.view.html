@@ -111,7 +111,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="appointment in vm.appointmentsStatus">
+        <tr ng-repeat="appointment in vm.clientAppointments">
           <td>{{appointment.date}}</td>
           <td>{{appointment.state}}</td>
         </tr>
@@ -131,10 +131,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr >
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr ng-repeat="size in vm.sizesClient">
+          <td>{{size.imc}}</td>
+          <td>{{size.porcentFat}}</td>
+          <td>{{size.porcentMuscle}}</td>
         </tr>
       </tbody>
     </table>

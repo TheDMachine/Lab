@@ -8,14 +8,15 @@
       vm.reviewAppoint = [];
       vm.date = new Date();
       vm.coachAppoint = [];
+      vm.acceptedAppoint = [];
       
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.userIn = userService.findUsers(userService.getCookie());
         console.log(vm.userIn);
         vm.users = userService.getUsers();
         vm.appointments = appointmentService.getAppointment();
-        vm.size = sizeService.getSize();
         inReviewAppointment();
+        vm.size = sizeService.getSize();
       }init();
 
       vm.save = function(){
@@ -165,10 +166,10 @@
 
     
       function inReviewAppointment(){
-
+        vm.appointments = appointmentService.getAppointment();
         for (var i = 0; i < vm.appointments.length; i++) {
         if (vm.appointments[i].coachName == vm.userIn.name) {
-          if(vm.appointments[i].state == 'Revisión')
+          if(vm.appointments[i].state == 'Revisión' || vm.appointments[i].state == 'Aceptado' )
           vm.reviewAppoint.push(vm.appointments[i]);
           }
         }
@@ -176,31 +177,27 @@
       }
 
       vm.acceptedAppointment= function(){
-        var appointments = appointmentService.getAppointment();
-        var acceptedAppoint = [];
-        for (var i = 0; i < appointments.length; i++) {
-          if (appointments[i].state == 'Aceptado') {
-            acceptedAppoint.push(appointments);
+        vm.appointments = appointmentService.getAppointment();
+        for (var i = 0; i < vm.appointments.length; i++) {
+          if (vm.appointments[i].state == 'Aceptado') {
+            vm.acceptedAppoint.push(vm.appointments[i]);
           }
         }
-        return acceptedAppoint;
       }
 
       vm.changeStateAccepted= function(pAppointment){
         pAppointment.state = 'Aceptado';
 
         appointmentService.updateAppointment(pAppointment);
-        init();
+        vm.acceptedAppointment();
       }
       
       vm.changeStateDenied= function(pAppointment){
         pAppointment.state = 'Denegada';
-
         appointmentService.updateAppointment(pAppointment);
+
       }
        vm.doMeasurements= function(pAppointment){
-        vm.clientName = pAppointment.clientName;
-        vm.clientFirstName = pAppointment.clientFirstName;
         vm.id = pAppointment.clientId;
         vm.gender = pAppointment.clientGender;
        }
