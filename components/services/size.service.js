@@ -48,11 +48,11 @@
       var proCalves = (calvesLeft + calvesRight) / 2;
       var sumatoria = proTriceps + proSubscapular + proSupraespinal + proAbdominal + proThighs + proCalves;
 
-      if (genre == male) {
+      //if (genre == male) {
         porcentFat = 0.1051 * sumatoria + 2.585;
-      }else {
-        porcentFat = 0.1548 * sumatoria + 3.580;
-      }
+      //}else {
+      //  porcentFat = 0.1548 * sumatoria + 3.580;
+      //}
       return porcentFat;
       }
 
@@ -98,5 +98,5 @@
         return msj;
       }
 
-    }
+    }//
 })();

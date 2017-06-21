@@ -94,7 +94,7 @@
 
       function seeImc(imc) {
         var msj = sizeService.qualification(imc);
-        vm.clienteImc = msj;
+        vm.clientImc = msj;
       }
 
       function clean(){

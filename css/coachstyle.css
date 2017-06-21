@@ -1,11 +1,43 @@
+h3{
+  font-size: 1.7em;
+  padding: 15px 0;
+}
+h4{
+  font-size: 1.2em;
+  padding: 15px 0;
+}
 .dateRequested{
-  height: 58em;
+  height: 62em;
   background: #007d75;
 }
 .dateAproved{
-  height: 58em;
+  height: 62em;
   background: #529a86;
 }
 .dateRequested h3, .dateAproved h3{
   text-align: center;
+}
+.coachView .menu{
+  background: #000;
+}
+.coachView .menu .btn{
+  text-decoration: none;
+  color: #f1c40f;
+}
+.fa-cog{
+  color: #f1c40f;
+}
+#personal{
+  background: #2e2e2e;
+  color: #fff;
+  color: #f1c40f;
+  padding-bottom: 1.5em;
+}
+#personal .btn, .frmSize .btn{
+  background: #f1c40f;
+  border: none;
+  margin-top: 1.3em;
+}
+.frmSize .btn{
+  margin-bottom: 1.3em;
 }
