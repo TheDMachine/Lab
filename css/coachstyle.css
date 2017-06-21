@@ -1,19 +1,28 @@
-.dateRequested{
-
- 
+#blackSpace{
+  background: #000;
+  color: #fff;
+}
+#blackSpace .btn{
+  color: #fff;
+  margin-top: 5px;
+  font-size: 1.5em;
+}
+#NameImgSpace{
+  padding-top: 2em;
+  background: #E6E6E6;
 }
 .dateAproved{
-
-  
+  background: #FFCE3E;
 }
 .dateRequested h3, .dateAproved h3{
   text-align: center;
 }
-
 .client-container-image{
   width: 27.5%;
 }
-
 .client-container-image img{
   width: 100%;
+}
+.frmSize .btn{
+  margin: 35px;
 }

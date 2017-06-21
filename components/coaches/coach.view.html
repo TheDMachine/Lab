@@ -1,4 +1,4 @@
-<section id="coachView">
+<section id="coachView" class="container-fluid">
 	<div id="blackSpace" class="row">
     	<div class="col-xs-offset-7 col-xs-5 col-sm-offset-10 col-sm-2">
       		<md-button ng-click="coach.logOut()"> Cerrar Sesión </md-button>
@@ -7,9 +7,9 @@
   	<!-- Nombre del coach -->
   	<div id="NameImgSpace" class="row">
 	    <div class="col-xs-12 col-sm5 col-md-3 col-lg-3">
-    		<figure class="client-container-image">
+    		<!--<figure class="client-container-image">
         		<img class="col-xs-6 col-sm-4 col-md-3 col-lg-3 clientImage" ng-src="{{coach.userIn.image}}" alt="Description"/>
-      		</figure>
+      		</figure>-->
 	      <h3>¡Hola {{coach.userIn.name}} {{coach.userIn.firstName}}!</h3>
                   <button class="btn btn-primary btn-lg buttonCollapse" type="button"  data-toggle="collapse" data-target="#ModInfo" aria-expanded="false" aria-controls="ModInfo" ng-click="vm.getInfo(vm.userIn)">Editar Perfil</button>
         <div class="collapse" id="ModInfo">
@@ -66,62 +66,53 @@
                 </div>
               </md-input-container>
 
-              <button class="btn btn-primary buttonForm" type="submit" data-toggle="collapse" data-target="#ModInfo" ng-click="coach.update(coach.userIn)" ng-disabled="frmModInfo.$invalid">Actualizar</button>
-            </form>
-          </div>
-        </div>
-	    </div>
-	    <div id="motivationMsj" class="col-sm-6 col-md-6 col-lg-offset-3 col-lg-5">
-	      <p>¡Lucho por mejorar la salud de los demás!</p>
-	    </div>
+				</div>
+        <button class="btn btn-primary buttonForm" type="submit" data-toggle="collapse" data-target="#ModInfo" ng-click="coach.update(coach.userIn)" ng-disabled="frmModInfo.$invalid">Actualizar</button>
+      </form>
+	   </div>
   	</div>
  	<!-- Tablas de citas solicitadas y aceptadas-->
 	<div id="" class="row">
-		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-      <button class="btn btn-primary buttonCollapse" type="button"  data-toggle="collapse" data-target="#appointInfo" aria-expanded="false" aria-controls="appointInfo" ng-click="coach.inReviewAppointment()">Agenda de Citas</button>
-      <div class="collapse" id="appointInfo">
-        <div class="well">
-          <div class="dateRequested col-xs-12 col-sm-6 col-md-12 col-lg-12">
-           <!-- Tablas de citas solicitadas-->
-           <h3 class="col-xs-12">Solicitadas</h3>
-            <table class="col-xs-12">
-              <thead>
-                <tr>
-                  <th>Cliente</th>
-                  <th>Fecha</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="app in coach.revApp">
-                  <td>{{app.clientName}} {{app.clientFirstName}}</td>
-                  <td>{{app.date}}</td>
-                  <td><input type="submit" value="aceptar" ng-click="coach.changeStateAccepted(app)"></td>
-                  <td><input type="submit" value="rechazar" ng-click="coach.changeStateDenied(app)"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="dateAproved col-xs-12 col-sm-6 col-md-12 col-lg-12">
-            <!-- Tablas de citas solicitadas y aceptadas-->
-            <h3 class="col-xs-12">Aceptadas</h3>
-            <table class="col-xs-12">
-              <thead>
-                <tr>
-                  <th>Cliente</th>
-                    <th>Fecha</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="app in coach.acceptApp">
-                    <td>{{app.clientName, app.clientFirstName}}</td>
-                    <td>{{app.date}}</td>
-                    <td><input type="submit" value="Hacer mediciones" ng-click="coach.doMeasurements(app)"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>   
-      </div>
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<div class="dateRequested col-xs-12 col-sm-6 col-md-12 col-lg-12">
+				<!-- Tablas de citas solicitadas-->
+				<h3 class="col-xs-12">Solicitadas</h3>
+	      		<table class="col-xs-12">
+		        	<thead>
+			          <tr>
+			            <th>Cliente</th>
+             			<th>Fecha</th>
+			          </tr>
+		        	</thead>
+		        	<tbody>
+			          <tr ng-repeat="appointment in coach.reviewAppoint">
+			              <td>{{appointment.clientName}}</td>
+			              <td>{{appointment.date}}</td>
+			              <td><input type="submit" value="aceptar" ng-click="coach.changeStateAccepted(appointment)"></td>
+			              <td><input type="submit" value="rechazar" ng-click="coach.changeStateDenied(appointment)"></td>
+			          </tr>
+		        	</tbody>
+		      	</table>
+    		</div>
+	    	<div class="dateAproved col-xs-12 col-sm-6 col-md-12 col-lg-12">
+	    		<!-- Tablas de citas solicitadas y aceptadas-->
+	    		<h3 class="col-xs-12">Aceptadas</h3>
+		      	<table class="col-xs-12">
+			        <thead>
+			          <tr>
+			            <th>Cliente</th>
+              			<th>Fecha</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+			          <tr ng-repeat="appointment in coach.acceptedAppoint">
+			              <td>{{appointment.clientName}}</td>
+			              <td>{{appointment.date}}</td>
+			              <td><input type="submit" value="Hacer mediciones" ng-click="coach.doMeasurements(appointment)"></td>
+			          </tr>
+			        </tbody>
+		      	</table>
+	    	</div>
 		</div>
   </div>
 		<!-- Formulario para medidas del cliente-->
@@ -397,7 +388,7 @@
                 	</div>
               	</md-input-container>
 
-              	<button class="btn btn-primary col-xs-12 col-sm-4" type="submit" data-toggle="collapse" data-target="#ModInfo" ng-click="coach.save()" ng-disabled="frmMeasurements.$invalid">Agregar</button>
+              	<button class="btn btn-primary col-xs-12 col-sm-4" type="submit" data-toggle="collapse" data-target="#ModInfo" ng-click="coach.save()" ng-disabled="frmModInfo.$invalid">Agregar</button>
 			</form>
 		</div>
 	</div>

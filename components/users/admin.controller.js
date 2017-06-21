@@ -78,7 +78,7 @@
               document.querySelector('.error').innerHTML = '';
               document.querySelector('.success').innerHTML = 'Usuario registrado correctamente!';
               console.log(vm.users);
-              /*clean();*/
+              clean();
               init();
               return;
             }

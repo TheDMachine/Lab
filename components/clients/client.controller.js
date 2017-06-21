@@ -2,16 +2,21 @@
   angular
     .module('myApp')
     .controller('clientAccountCtrl', clientAccountCtrl);
-    function clientAccountCtrl(userService, $scope, appointmentService, AuthService, $cookies, ImageService, Upload){ //se inyecta el service userService en el controlador para que se tenga acceso
+    function clientAccountCtrl(userService, $scope, appointmentService, AuthService, $cookies, ImageService, Upload, sizeService){ //se inyecta el service userService en el controlador para que se tenga acceso
       //controlador
       var vm = this; //binding del controlador con el html, solo en el controlador
       vm.userIn = {};
+      vm.appointments = appointmentService.getAppointment();
+      vm.clientAppointments = [];
+      vm.sizes = sizeService.getSize();
+      vm.sizesClient = [];
 
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.userIn = userService.findUsers(userService.getCookie());
         console.log(vm.userIn);
         vm.users = userService.getUsers();
         vm.appointments = appointmentService.getAppointment(); 
+        appointmentsStatus();
        }init();
 
       vm.getInfo = function(puser){
@@ -53,7 +58,7 @@
           vm.userIn='';
       }
 
-      vm.setAppointment = function(pDate){
+      vm.setAppointmentClient = function(pDate){
         var bError =  false;
 
         var appointmentInfo = {
@@ -67,6 +72,7 @@
         };
 
         bError = appointmentService.setAppointment(appointmentInfo);
+        console.log(vm.appointments);
 
         if (bError === true) {
           document.querySelector('.ErrorMessage').innerHTML = 'Fecha no disponible';
@@ -75,15 +81,19 @@
         };
       }
 
-      vm.appointmentsStatus= function(){
-        var appointments = appointmentService.getAppointment();
-        var clientAppointments = [];
-        for (var i = 0; i < appointments.length; i++) {
-          if (vm.userIn.id == appointments[i].clientId) {
-            clientAppointments.push(appointments);
+      function appointmentsStatus(){
+
+        for (var i = 0; i < vm.appointments.length; i++) {
+          if (vm.userIn.id == vm.appointments[i].clientId) {
+            vm.clientAppointments.push(vm.appointments[i]);
           }
         }
-        return clientAppointments;
+
+        for(var i = 0; i < vm.sizes.length; i++){
+          if(vm.userIn.id == vm.sizes[i].id){
+            vm.sizesClient.push(vm.sizes[i]);
+          }
+        }
       }
 
       vm.logOut = function(){

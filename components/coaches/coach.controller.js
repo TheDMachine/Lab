@@ -7,17 +7,16 @@
       var vm = this; //binding del controlador con el html, solo en el controlador
       vm.reviewAppoint = [];
       vm.date = new Date();
-    
+      vm.coachAppoint = [];
+      vm.acceptedAppoint = [];
       
       function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
         vm.userIn = userService.findUsers(userService.getCookie());
         console.log(vm.userIn);
         vm.users = userService.getUsers();
         vm.appointments = appointmentService.getAppointment();
+        inReviewAppointment();
         vm.size = sizeService.getSize();
-        vm.revApp = appointmentService.getRevApp();
-        console.log(vm.revApp);
-        vm.acceptApp = appointmentService.getAcceptApp();
       }init();
 
       vm.save = function(){
@@ -96,6 +95,7 @@
 
         console.log(newSize);
         sizeService.setSize(newSize);
+        console.log(vm.size);
         clean();
         seeImc(imc);
         init();
@@ -165,50 +165,41 @@
       }
 
     
-      // vm.inReviewAppointment= function(){
-      //   var appointments = appointmentService.getAppointment();
-      //   var reviewAppoint = [];
-      //   for (var i = 0; i < appointments.length; i++) {
-      //     if (appointments[i].state == 'Revisión' && appointments[i].coachName == vm.userIn.name) {
-      //       reviewAppoint.push(appointments);
-      //     }
-      //   }
+      function inReviewAppointment(){
+        vm.appointments = appointmentService.getAppointment();
+        for (var i = 0; i < vm.appointments.length; i++) {
+        if (vm.appointments[i].coachName == vm.userIn.name) {
+          if(vm.appointments[i].state == 'Revisión' || vm.appointments[i].state == 'Aceptado' )
+          vm.reviewAppoint.push(vm.appointments[i]);
+          }
+        }
+        console.log(vm.reviewAppoint);
+      }
 
-      //   appointmentService.setReviewAppointments(reviewAppoint);
-      //   init();
-      // }
-
-      // function acceptedAppointment(){
-      //   var appointments = appointmentService.getAppointment();
-      //   var acceptedAppoint = [];
-      //   for (var i = 0; i < appointments.length; i++) {
-      //     if (appointments[i].state == 'Aceptado' && appointments[i].coachName == vm.userIn.name) {
-      //       acceptedAppoint.push(appointments);
-      //     }
-      //   }
-      //   appointmentService.setAcceptAppointments(acceptedAppoint);
-      //   init();
-      // }
+      vm.acceptedAppointment= function(){
+        vm.appointments = appointmentService.getAppointment();
+        for (var i = 0; i < vm.appointments.length; i++) {
+          if (vm.appointments[i].state == 'Aceptado') {
+            vm.acceptedAppoint.push(vm.appointments[i]);
+          }
+        }
+      }
 
       vm.changeStateAccepted= function(pAppointment){
         pAppointment.state = 'Aceptado';
-
-        appointmentService.updateAppointment(pAppointment[i]);
-        acceptedAppointment();
-        init();
+        appointmentService.updateAppointment(pAppointment);
+        vm.acceptedAppointment();
       }
       
       vm.changeStateDenied= function(pAppointment){
         pAppointment.state = 'Denegada';
+        appointmentService.updateAppointment(pAppointment);
 
-        appointmentService.updateAppointment(pAppointment[i]);
       }
-       // vm.doMeasurements= function(pAppointment){
-       //  vm.clientName = pAppointment.clientName;
-       //  vm.clientFirstName = pAppointment.clientFirstName;
-       //  vm.id = pAppointment.clientId;
-       //  vm.gender = pAppointment.clientGender;
-       // }
+       vm.doMeasurements= function(pAppointment){
+        vm.id = pAppointment.clientId;
+        vm.gender = pAppointment.clientGender;
+       }
 
        vm.logOut = function(){
       AuthService.logOut();

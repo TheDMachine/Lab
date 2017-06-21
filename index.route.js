@@ -63,7 +63,7 @@
         }]
       },
       controller: 'landingAccountCtrl',
-      controllerAs: 'tabCtrl'
+      controllerAs: 'landing'
     })
 
     $urlRouterProvider.otherwise('/landing');

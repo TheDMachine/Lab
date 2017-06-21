@@ -93,7 +93,7 @@
                    <div ng-messages-include="components/includes/messages.html"></div>
                  </div>
               </md-input-container>
-              <button class="btn btn-primary buttonForm" type="submit" ng-click="vm.setAppointment(vm.date)"  ng-disabled="frmClientM.$invalid">Enviar</button>
+              <button class="btn btn-primary buttonForm" type="submit" ng-click="vm.setAppointmentClient(vm.date)"  ng-disabled="frmClientM.$invalid">Enviar</button>
             </form>
             <p class="ErrorMessage"></p>
             <p class="SuccessMessage"></p>
@@ -102,27 +102,24 @@
       </div>
     </div>
     
-    <!-- Tabla de estado de citas -->
-    <div id="notifications" class="col-sm-6 col-md-6 col-lg-6">
-      <p><span class="fa fa-bell"></span> Notificación de las citas solicitadas: </p>
-      <table class="col-xs-11">
-        <thead>
-          <tr>
-            <th>FECHA</th>
-            <th>ESTADO</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="app in vm.appointments">
-            <td>{{app.date}}</td>
-            <td>{{app.state}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <!-- Tabla de estado de citas -->
+  <div id="notifications"  class="col-sm-6 col-md-6 col-lg-6">
+    <p><span class="fa fa-bell"></span> Notificación de las citas solicitadas: </p>
+    <table class="col-xs-11">
+      <thead>
+        <tr>
+          <th>FECHA</th>
+          <th>ESTADO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="appointment in vm.clientAppointments">
+          <td>{{appointment.date}}</td>
+          <td>{{appointment.state}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  
   
   <!-- Tabla para filtro de medidas-->
   <div id="filterMeas" class="row">
@@ -136,10 +133,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr >
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr ng-repeat="size in vm.sizesClient">
+          <td>{{size.imc}}</td>
+          <td>{{size.porcentFat}}</td>
+          <td>{{size.porcentMuscle}}</td>
         </tr>
       </tbody>
     </table>

@@ -16,21 +16,8 @@
   
     function _setAppointment(pAppointment){
       var appointmList = _getAppointment();
-      var bError = false;
-      var coachAppoint = [];
-      for (var i = 0; i < appointmList.length; i++) {
-        if (appointmList[i].coachName == pAppointment.coachName) {
-          coachAppoint.push(appointmList);
-        }
-      }
-      for (var j = 0; j < coachAppoint.length; j++) {
-        if (coachAppoint[j].date == pAppointment.date) {
-          bError = true;
-        }
-        appointmList.push(pAppointment);
-      }
+      appointmList.push(pAppointment);
       localStorage.setItem('lsAppointmentsList', JSON.stringify(appointmList));
-      return bError;
     }
     function _getAppointment(){
         var appointmList = JSON.parse(localStorage.getItem('lsAppointmentsList'));
