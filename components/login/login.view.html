@@ -3,7 +3,8 @@
 		<md-card class="card-40-center" id="login-card">
 	        <md-card-title>
 	            <md-card-title-text>
-	                <span class="md-headline">Log In</span>
+	            	<h6 style="font-family: 'Kalam', cursive; color: #ffce3e; text-shadow: 1px 1px 1px rgba(0,0,0,0.5); font-size: 4rem; width:85%; margin: 2% auto;">Vital-Gym</h6>
+	                <!--<span class="md-headline">Log In</span>-->
 	            </md-card-title-text>
 	    	</md-card-title>
 	    	<form ng-submit="vm.login()" novalidate name="frmLogin" id="form-login">
@@ -21,8 +22,8 @@
 						</md-input-container>
 					</div>
 					<div layout="row" layout-align="center">
-						<p class="blocked"></p>
-						<md-button id="login-button" flex="100" type="submit" ng-disabled="frmLogin.$invalid">Iniciar Sesión</md-button>
+						<p layout="row" class="blocked"></p>
+						<md-button id="login-button" layout="row" flex="100" type="submit" ng-disabled="frmLogin.$invalid">Iniciar Sesión</md-button>
 					</div>
 				</div>
 			</form>
