@@ -93,6 +93,7 @@
 
         console.log(newSize);
         sizeService.setSize(newSize);
+        console.log(vm.size);
         clean();
         seeImc(imc);
         init();
@@ -176,7 +177,6 @@
           }
         }
         console.log(vm.reviewAppoint);
-        init();
       }
 
       vm.acceptedAppointment= function(){

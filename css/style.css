@@ -247,6 +247,7 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   color: #464644;
   padding-bottom: 20px;
   border-bottom: 1px solid #464644;
+}
 #clientView #notifications table tbody tr td, #clientView #filterMeas table tbody tr td{
   color: #464644;
   border-bottom: 1px solid #464644;
