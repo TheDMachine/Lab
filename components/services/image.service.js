@@ -8,8 +8,8 @@
     var cloudObj = {
       url:'https://api.cloudinary.com/v1_1/pabskun/image/upload',
       data:{
-        upload_preset: 'lab1Proyecto',
-        tags:'Any',
+        upload_preset: 'ggpa6ggr',
+        tags:'rbkg',
         context:'photo=test'
       }
     };
