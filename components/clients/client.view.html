@@ -7,14 +7,14 @@
   <!-- Nombre de usuario -->
   <div id="NameImgSpace" class="row">
     <div class="col-xs-12 col-sm5 col-md-3 col-lg-3">
-      <figure class="client-container-image">
+      <!-- <figure class="client-container-image">
         <img class="col-xs-6 col-sm-4 col-md-3 col-lg-3 clientImage" ng-src="{{vm.userIn.image}}" alt="Description"/>
-      </figure>
+      </figure> -->
       <h3>¡Hola {{vm.userIn.name}} {{vm.userIn.firstName}}!</h3>
     </div>
-    <div id="motivationMsj" class="col-sm-6 col-md-6 col-lg-offset-3 col-lg-5">
+    <!-- <div id="motivationMsj" class="col-sm-6 col-md-6 col-lg-offset-3 col-lg-5">
       <p>¡Siempre firme hacia las metas, se puede lograr!</p>
-    </div>
+    </div> -->
   </div>
   <!-- Formulario de datos a editar -->
   <div id="forms-msj" class="row">
@@ -44,10 +44,6 @@
                   <div ng-messages-include="components/includes/messages.html"></div>
                 </div>
               </md-input-container>
-              
-              <!-- Campo fotografía -->
-              <label>Fotografía</label>
-                <input type="file" ng-model="user.image" name="photo" id="photo">
 
               <!-- Campo teléfono -->
               <md-input-container flex-offset>
@@ -68,6 +64,14 @@
                   <div ng-messages-include="components/includes/messages.html"></div>
                 </div>
               </md-input-container>
+
+              <br>
+              
+              <!-- Campo fotografía -->
+              <label>Fotografía</label>
+                <input type="file" ng-model="user.image" name="photo" id="photo">
+
+              <br>
 
               <button class="btn btn-primary buttonForm" type="submit" data-toggle="collapse" data-target="#ModInfo" ng-click="vm.update(vm.userIn)" ng-disabled="frmModInfo.$invalid">Actualizar</button>
             </form>

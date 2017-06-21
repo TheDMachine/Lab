@@ -185,8 +185,8 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   text-align: center;
 }
 
-#clientView #forms-msj #ModInfo .well, #clientView #forms-msj #clientMeasurement .well{
-  
+#clientView #forms-msj{
+  margin-bottom: 100px;
 }
 #clientView #forms-msj #forms .buttonForm{
   background-color: transparent;
@@ -194,13 +194,13 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   color: #464644;
 }
 #clientView #forms-msj #forms button:hover{
-  background-color:  #efc01d;
+  background-color:  #ffce3e;
   transition: 2s;
   color: #000;
 }
-#clientView #forms-msj #forms div label{
+/*#clientView #forms-msj #forms div label{
   font-size: 1.286em;
-}
+}*/
 #clientView #forms-msj #coachAsigne{
   color: #464644;
 }
@@ -214,18 +214,15 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   color: #464644;
 }
 #clientView .buttonCollapse{
-  background-color:  #efc01d;
+  background-color:  #ffce3e;
  /* background: rgba(239, 192, 29, 0.4);*/
   border: none;
   color: #000;
   margin-top: 30px;
   outline: none;
 }
-#clientView div p{
-  
-}
 #clientView #forms-msj #notifications{
-  
+  padding-top: 30px;
 }
 #clientView #forms-msj #notifications p span{
   color: #f11616;
@@ -235,10 +232,15 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
   margin-left: 2%;
   margin-bottom: 20px;
 }
+#clientView #filterMeas p{
+  margin-left: 2%;
+}
 #clientView #filterMeas div input{
   border-radius: 5px;
   border: none; 
+  background-color: transparent;
   margin-left: 2%;
+  outline: none;
 }
 #clientView #forms-msj #notifications table, #clientView #filterMeas table{
   margin-left: 2%;
